@@ -6,7 +6,7 @@ import java.util.*;
 
 
 
-public class Main {
+public class Torneo {
 
     static Connection cnxA;
     static Connection cnxB;
@@ -256,7 +256,23 @@ public class Main {
         System.out.println();
     }
 
-    public static void borrarDatos(Connection cnx){
+    public void descInsJugador(Connection cnx, int Ranking){
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = cnx.createStatement().executeQuery("select Participa from jugador where = " + Ranking);
+            rs.first();
+            if (rs.getBoolean(1)){
+                st.executeUpdate("update jugador set Participa = false where Ranking = " + Ranking);
+            }else {
+                st.executeUpdate("update jugador set Participa = true where Ranking = " + Ranking);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void borrarDatos(Connection cnx){
         try {
             cnx.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
             Statement st = cnx.createStatement();
@@ -350,11 +366,8 @@ public class Main {
             generarDatosPremio(cnxB, CSV_PRE_B);
             generarDatosOpta(cnxA);
             generarDatosOpta(cnxB);
-            //generarPremioEnClasificacion(cnxA);
-            //generarPremioEnClasificacion(cnxB);
-            for (Jugador jugador: Jugador.obtenerJugadores(cnxA)){
-                System.out.println(jugador.getNombre());
-            }
+            generarPremioEnClasificacion(cnxA);
+            generarPremioEnClasificacion(cnxB);
 
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
@@ -362,6 +375,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        /*
         int opcion;
         do {
             mostrarMenu1();
@@ -399,5 +413,7 @@ public class Main {
                 System.out.println("Error: Opción NO válida");
             }
         }while (opcion != 0);
+
+         */
     }
 }

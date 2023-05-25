@@ -57,7 +57,7 @@ public class TablaController {
     private Button btmReset;
 
     @FXML
-    private TableView<Jugador> tablas = new TableView<Jugador>();
+    private TableView<Jugador> tablas = new TableView<>();
 
     @FXML
     private TableColumn<Jugador, Integer> colRank;
@@ -97,14 +97,18 @@ public class TablaController {
 
     @FXML
     protected void mostrarTabla(){
-        colRank.setCellValueFactory(new PropertyValueFactory<Jugador, Integer>("Ranking"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<Jugador, String>("Nombre"));
-        colFide.setCellValueFactory(new PropertyValueFactory<Jugador, Integer>("Fide"));
-        colFide_Id.setCellValueFactory(new PropertyValueFactory<Jugador, Integer>("Id_Fide"));
-        colOrigen.setCellValueFactory(new PropertyValueFactory<Jugador, String>("Origen"));
-        colAlojado.setCellValueFactory(new PropertyValueFactory<Jugador, String>("Alojado"));
-        colParti.setCellValueFactory(new PropertyValueFactory<Jugador, Boolean>("Participa"));
-        if(btmTablaA.isFocused()){
+        colRank.setCellValueFactory(new PropertyValueFactory<>("Ranking"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        colFide.setCellValueFactory(new PropertyValueFactory<>("Fide"));
+        colFide_Id.setCellValueFactory(new PropertyValueFactory<>("Id_Fide"));
+        colOrigen.setCellValueFactory(new PropertyValueFactory<>("Origen"));
+        colAlojado.setCellValueFactory(new PropertyValueFactory<>("Alojado"));
+        colParti.setCellValueFactory(new PropertyValueFactory<>("Participa"));
+        if (btmTablaA.isFocused()){
+            btmTablaB.getStyleClass().remove("mantener");
+            btmTablaB.getStyleClass().add("colorButTab");
+            btmTablaA.getStyleClass().remove("colorButTab");
+            btmTablaA.getStyleClass().add("mantener");
             ObservableList<Jugador> ob = FXCollections.observableArrayList();
             for (Jugador jugador: Jugador.obtenerJugadores(cnxA)){
                 ob.add(jugador);
@@ -117,6 +121,10 @@ public class TablaController {
         }
 
         if (btmTablaB.isFocused()){
+            btmTablaA.getStyleClass().remove("mantener");
+            btmTablaA.getStyleClass().add("colorButTab");
+            btmTablaB.getStyleClass().remove("colorButTab");
+            btmTablaB.getStyleClass().add("mantener");
             ObservableList<Jugador> ob = FXCollections.observableArrayList();
             for (Jugador jugador: Jugador.obtenerJugadores(cnxB)){
                 ob.add(jugador);
@@ -142,13 +150,14 @@ public class TablaController {
 
     @FXML
     protected void verPremios() throws IOException{
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz3.fxml"));
-        Parent root= loader.load();
-        Scene scene= new Scene(new Group(label_premio,root));
-        stage=(Stage) btmPremio.getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("Premios de jugadores");
-        stage.show();
-
+        if (!(label_premio == null)) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Interfaz3.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(new Group(label_premio, root));
+            stage = (Stage) btmPremio.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Premios de jugadores");
+            stage.show();
+        }
     }
 }

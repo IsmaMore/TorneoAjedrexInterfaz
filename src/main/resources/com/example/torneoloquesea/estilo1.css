@@ -1,20 +1,13 @@
 #fondo{
     -fx-background-image:url("https://historia.nationalgeographic.com.es/medio/2020/12/14/ajedrez-chino_4621e867_1280x853.jpg");
-    -fx-background-size: 900px;
-    -fx-background-repeat:no-repeat;
+    -fx-background-size: 100%;
 }
-#fondo2{
+#fondo2, #fondo3, #fondo4{
     -fx-background-image:url("https://img2.rtve.es/v/5859769?w=1600&preview=1618995578695.jpg");
-    -fx-background-size: 600px;
+    -fx-background-size: 120%;
 }
 
-#fondo4{
-    -fx-background-image:url("https://estaticos-cdn.elperiodico.com/clip/2507aac0-4919-46ab-955d-e8edcf8e1323_alta-libre-aspect-ratio_default_0.jpg");
-    -fx-background-size: 900px;
-    -fx-background-repeat:no-repeat;
-}
-
-#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmTablaA, #btmTablaB, #btmVolver{
+#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmVolver, #btmTrans{
     -fx-background-color: white;
     -fx-border-color: white;
     -fx-border-radius: 5px;
@@ -22,7 +15,29 @@
     -fx-border-width: 3px;
 }
 
-#btmsalida:hover, #btmIniciar:hover, #btmAplicar:hover, #btmCancelar:hover, #btmDesca:hover, #btmModifica:hover, #btmPremio:hover, #btmReset:hover, #btmTablaA:hover, #btmTablaB:hover, #btmVolver:hover{
+#btmTablaA, #btmTablaB{
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+}
+
+.colorButTab{
+    -fx-background-color: white;
+}
+
+.mantener{
+    -fx-background-color: grey;
+}
+
+#btmsalida:hover, #btmIniciar:hover, #btmAplicar:hover, #btmCancelar:hover, #btmDesca:hover, #btmModifica:hover, #btmPremio:hover, #btmReset:hover, #btmTablaA:hover, #btmTablaB:hover, #btmVolver:hover, #btmTrans:hover{
     -fx-background-color: #cdcdcd;
 }
+
+#btmsalida:pressed, #btmIniciar:pressed, #btmAplicar:pressed, #btmCancelar:pressed, #btmDesca:pressed, #btmModifica:pressed, #btmPremio:pressed, #btmReset:pressed, #btmTablaA:pressed, #btmTablaB:pressed, #btmVolver:pressed, #btmTrans:pressed{
+    -fx-background-color: grey;
+}
+
+
+
 

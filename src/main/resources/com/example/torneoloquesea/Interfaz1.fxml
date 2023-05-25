@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox id="fondo" alignment="CENTER" prefHeight="600.0" prefWidth="900.0" spacing="20.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.InicioController">
+<VBox id="fondo" alignment="CENTER" prefHeight="650.0" prefWidth="1000.0" spacing="20.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.InicioController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -35,5 +35,11 @@
                <Cursor fx:constant="HAND" />
             </cursor></Button>
       </children>
+      <VBox.margin>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </VBox.margin>
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
    </VBox>
 </VBox>

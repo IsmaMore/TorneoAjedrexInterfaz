@@ -18,7 +18,7 @@
                   <Insets bottom="10.0" />
                </HBox.margin>
             </Label>
-            <Button fx:id="btmTablaA" mnemonicParsing="false" onAction="#mostrarTabla" prefHeight="40.0" prefWidth="125.0" style="-fx-background-radius: 10;" text="Torneo A" textFill="RED">
+            <Button fx:id="btmTablaA" mnemonicParsing="false" onAction="#mostrarTabla" prefHeight="40.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="colorButTab" stylesheets="@estilo1.css" text="Torneo A" textFill="#b50303">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -26,7 +26,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btmTablaB" mnemonicParsing="false" onAction="#mostrarTabla" prefHeight="40.0" prefWidth="125.0" style="-fx-background-radius: 10;" text="Torneo B" textFill="BLUE">
+            <Button fx:id="btmTablaB" mnemonicParsing="false" onAction="#mostrarTabla" prefHeight="40.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="colorButTab" stylesheets="@estilo1.css" text="Torneo B" textFill="#0202a8">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -36,27 +36,27 @@
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="585.0" prefWidth="900.0">
+      <HBox prefHeight="691.0" prefWidth="980.0">
          <children>
-            <TableView fx:id="tablas" prefHeight="547.0" prefWidth="790.0">
+            <TableView fx:id="tablas" maxHeight="540.0" opacity="0.9" prefWidth="780.0">
               <columns>
                 <TableColumn fx:id="colRank" prefWidth="67.0" text="Ranking" />
                 <TableColumn fx:id="colNombre" prefWidth="227.0" text="Nombre" />
                   <TableColumn fx:id="colFide" prefWidth="41.0" text="FIDE" />
                   <TableColumn fx:id="colFide_Id" prefWidth="87.0" text="FIDE_ID" />
-                  <TableColumn fx:id="colOrigen" prefWidth="216.0" text="Origen" />
-                  <TableColumn fx:id="colAlojado" prefWidth="59.0" text="Alojado" />
-                  <TableColumn fx:id="colParti" prefWidth="75.0" text="Participa" />
+                  <TableColumn fx:id="colOrigen" prefWidth="196.0" text="Origen" />
+                  <TableColumn fx:id="colAlojado" prefWidth="60.0" text="Alojado" />
+                  <TableColumn fx:id="colParti" prefWidth="71.0" text="Participa" />
               </columns>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </TableView>
-            <VBox alignment="CENTER" prefHeight="499.0" prefWidth="225.0" spacing="30.0">
+            <VBox alignment="CENTER" prefHeight="563.0" prefWidth="204.0" spacing="30.0">
                <children>
                   <Button fx:id="btmModifica" mnemonicParsing="false" onAction="#modificar" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Modificar">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -70,38 +70,32 @@
                      </cursor></Button>
                   <Button fx:id="btmPremio" mnemonicParsing="false" onAction="#verPremios" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Premios">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
                   <Button fx:id="btmReset" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Resetear">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <HBox alignment="BOTTOM_RIGHT" prefHeight="93.0" prefWidth="188.0">
-                     <children>
-                        <Button fx:id="btmVolver" alignment="CENTER" mnemonicParsing="false" onAction="#volver" prefHeight="50.0" prefWidth="80.0" style="-fx-background-radius: 12;" text="Volver">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                     </children>
+                  <Button fx:id="btmVolver" alignment="CENTER" mnemonicParsing="false" onAction="#volver" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 12;" text="Volver">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                      <VBox.margin>
-                        <Insets right="20.0" />
+                        <Insets top="75.0" />
                      </VBox.margin>
-                  </HBox>
+                  </Button>
                </children>
                <HBox.margin>
                   <Insets bottom="10.0" />

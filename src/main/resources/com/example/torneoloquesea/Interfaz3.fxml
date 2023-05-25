@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="fondo3" prefHeight="600.0" prefWidth="900.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.PremioController">
+   <children>
+      <Label fx:id="nombrePremio" layoutX="46.0" layoutY="30.0" prefHeight="35.0" prefWidth="163.0" text="Premios" textFill="#ddd342">
+         <font>
+            <Font name="System Bold Italic" size="29.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaPremio" layoutX="46.0" layoutY="79.0" prefHeight="493.0" prefWidth="677.0">
+        <columns>
+          <TableColumn fx:id="clmPosicion" prefWidth="78.0" text="Posición" />
+            <TableColumn prefWidth="209.0" text="Nombre" />
+          <TableColumn prefWidth="236.0" text="Tipo" />
+            <TableColumn fx:id="clmCantidad" prefWidth="153.0" text="Cantidad" />
+        </columns>
+      </TableView>
+      <Button fx:id="btmVolver" layoutX="778.0" layoutY="519.0" mnemonicParsing="false" onAction="#volver" prefHeight="53.0" prefWidth="77.0" style="-fx-background-color: black; -fx-border-color: grey; -fx-border-width: 2;" text="Volver" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="741.0" layoutY="79.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="139.0" text="Descargar PDF" />
+   </children>
+</AnchorPane>

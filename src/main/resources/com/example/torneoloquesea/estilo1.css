@@ -13,3 +13,16 @@
     -fx-background-size: 900px;
     -fx-background-repeat:no-repeat;
 }
+
+#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmTablaA, #btmTablaB, #btmVolver{
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+}
+
+#btmsalida:hover, #btmIniciar:hover, #btmAplicar:hover, #btmCancelar:hover, #btmDesca:hover, #btmModifica:hover, #btmPremio:hover, #btmReset:hover, #btmTablaA:hover, #btmTablaB:hover, #btmVolver:hover{
+    -fx-background-color: #cdcdcd;
+}
+

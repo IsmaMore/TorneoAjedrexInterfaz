@@ -26,39 +26,6 @@ public class Torneo {
         }
     }
 
-    public static int leerInt() {
-        Scanner sc = new Scanner(System.in);
-        while (true){
-            try {
-                return sc.nextInt();
-            } catch (InputMismatchException e){
-                sc.next();
-                System.out.println("Error: No válido");
-            }
-        }
-    }
-
-    public static void mostrarMenu1(){
-        System.out.println(
-                "Elige una opción:" + "\n" +
-                "1 - Torneo A" + "\n" +
-                "2 - Torneo B" + "\n" +
-                "0 - Salir"
-        );
-    }
-
-    public static void mostrarMenu2(){
-        System.out.println(
-                "Elige una opción:" + "\n" +
-                "1 - Mostrar Datos" + "\n" +
-                "2 - Borrar Datos" + "\n" +
-                "3 - Regenerar Datos" + "\n" +
-                "4 - Generar Premios" + "\n" +
-                "5 - Mostrar a que premio opta cada jugador" + "\n" +
-                "0 - Atrás"
-        );
-    }
-
     public static int buscarIdTipoPremio(String aux, Connection cnx){
         try {
             ResultSet rs = cnx.createStatement().executeQuery("select * from tipoPremio");
@@ -69,25 +36,11 @@ public class Torneo {
                     return rs.getInt(1);
                 }
             }while (rs.next());
+            rs.close();
         } catch (SQLException e){
             e.printStackTrace();
         }
         return 0;
-    }
-
-    public static String buscarTipoPremio(int n, Connection cnx){
-        try {
-            ResultSet rs = cnx.createStatement().executeQuery("select * from tipoPremio");
-            rs.first();
-            do {
-                if (n == rs.getInt(1)){
-                    return rs.getString(2);
-                }
-            }while (rs.next());
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return "";
     }
 
     public static void generarDatosPremio(Connection cnx, String csvFile){
@@ -98,7 +51,6 @@ public class Torneo {
             String line;
             int cont = 0;
             while ((line = lineReader.readLine()) != null){
-                //System.out.println(line);
                 String[] data = line.split("\\|");
                 String Id_Premio = data[0];
                 String aux = data[1];
@@ -179,81 +131,35 @@ public class Torneo {
             rsJ.first();
             rsTP.first();
             do {
-                ps.setInt(1, Integer.valueOf(rsJ.getString(1)));
+                ps.setInt(1, rsJ.getInt(1));
                 ps.setInt(2, rsTP.getInt(1));
                 ps.executeUpdate();
                 rsTP.next();
                 if (rsJ.getString(5) != null && rsJ.getString(5).equals(rsTP.getString(2))){
-                    ps.setInt(1, Integer.valueOf(rsJ.getString(1)));
+                    ps.setInt(1, rsJ.getInt(1));
                     ps.setInt(2, rsTP.getInt(1));
                     ps.executeUpdate();
                 }
                 while (rsTP.next() && rsTP.getString(2).contains("SUB")){
                     String str = rsTP.getString(2).substring(4);
-                    if (Integer.valueOf(rsJ.getString(3)) < Integer.valueOf(str)){
-                        //System.out.println(rsJ.getString(1) + " " + rsTP.getString(2));
-                        ps.setInt(1, Integer.valueOf(rsJ.getString(1)));
+                    if (rsJ.getInt(3) < Integer.parseInt(str)){
+                        ps.setInt(1, rsJ.getInt(1));
                         ps.setInt(2, rsTP.getInt(1));
                         ps.executeUpdate();
                     }
                 }
                 if (rsJ.getString(6).equals("Si")){
-                    ps.setInt(1, Integer.valueOf(rsJ.getString(1)));
+                    ps.setInt(1, rsJ.getInt(1));
                     ps.setInt(2, rsTP.getInt(1));
                     ps.executeUpdate();
                 }
                 rsTP.first();
             }while (rsJ.next());
+            rsJ.close();
+            rsTP.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }
-
-    public static ResultSet buscarDatosJugador(Connection cnx) throws SQLException {
-        Statement st = cnx.createStatement();
-        return st.executeQuery("Select * from jugador");
-    }
-
-    public static ResultSet buscarDatosOptan(Connection cnx) throws SQLException {
-        Statement st = cnx.createStatement();
-        return st.executeQuery("Select jugador.Ranking, Nombre, Id_Tipo_Premio from jugador inner join opta on jugador.Ranking=opta.Id_Ranking");
-    }
-    public static void mostrarDatos(ResultSet rs) throws SQLException{
-        rs.first();
-        if (rs.next()) {
-            rs.first();
-            for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                System.out.print(rs.getMetaData().getColumnName(i) + "\t");
-            }
-            System.out.println();
-            do {
-                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                    System.out.print(rs.getString(i) + "\t");
-                }
-                System.out.println();
-            } while (rs.next());
-        }
-    }
-
-    public static void mostrarDatosOptan(ResultSet rs, Connection cnx) throws SQLException{
-        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-            System.out.print(rs.getMetaData().getColumnName(i) + "\t");
-        }
-        rs.first();
-        int rank = 0;
-        do {
-            if (rank != rs.getInt(1)){
-                System.out.println();
-                rank = rs.getInt(1);
-                for (int i = 1; i < rs.getMetaData().getColumnCount(); i++) {
-                    System.out.print(rs.getString(i) + "\t");
-                }
-                System.out.print(buscarTipoPremio(rs.getInt(3), cnx));
-            }else {
-                System.out.print(", " + buscarTipoPremio(rs.getInt(3), cnx));
-            }
-        } while (rs.next());
-        System.out.println();
     }
 
     public void descInsJugador(Connection cnx, int Ranking){
@@ -266,7 +172,7 @@ public class Torneo {
             }else {
                 st.executeUpdate("update jugador set Participa = true where Ranking = " + Ranking);
             }
-
+            rs.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -307,6 +213,7 @@ public class Torneo {
                 ResultSet rsParticipa = psParticipa.executeQuery();
                 rsParticipa.first();
                 if (rsParticipa.getBoolean(1)) {
+                    rsParticipa.close();
                     ArrayList<Integer> ids = new ArrayList<>();
                     ArrayList<Integer> cant = new ArrayList<>();
                     psO.setInt(1, rsC.getInt(2));
@@ -325,7 +232,9 @@ public class Torneo {
                                 rsPOJ.last();
                             }
                         } while (rsPOJ.next());
+                        rsPOJ.close();
                     } while (rsOJ.next());
+                    rsOJ.close();
                     int sel = 0;
                     int cantSel = 0;
                     if (ids.size() == 1) {
@@ -345,16 +254,14 @@ public class Torneo {
                     }
                 }
             }while (rsC.next());
+            rsC.close();
+            rsP.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Connection cnxAux = cnxA;
-        String csvFile = "";
-
         try {
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
@@ -368,52 +275,10 @@ public class Torneo {
             generarDatosOpta(cnxB);
             generarPremioEnClasificacion(cnxA);
             generarPremioEnClasificacion(cnxB);
-
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
         } catch (SQLException e){
             e.printStackTrace();
         }
-
-        /*
-        int opcion;
-        do {
-            mostrarMenu1();
-            opcion = leerInt();
-            if (opcion == 1 || opcion == 2){
-                if (opcion == 1){
-                    cnxAux = cnxA;
-                    csvFile = CSV_JUG_A;
-                }
-                if (opcion == 2){
-                    cnxAux = cnxB;
-                    csvFile = CSV_JUG_B;
-                }
-                do {
-                    mostrarMenu2();
-                    opcion = leerInt();
-                    if (opcion >= 0 && opcion <= 5){
-                        try {
-                            switch (opcion) {
-                                case 1 -> mostrarDatos(buscarDatosJugador(cnxAux));
-                                case 2 -> borrarDatos(cnxAux);
-                                case 3 -> generarDatosJugador(cnxAux, csvFile);
-                                case 4 -> generarPremioEnClasificacion(cnxAux);
-                                case 5 -> mostrarDatosOptan(buscarDatosOptan(cnxAux), cnxAux);
-                            }
-                        }catch (SQLException e){
-                            e.printStackTrace();
-                        }
-                    }else {
-                        System.out.println("Error: Opción NO válida");
-                    }
-                }while (opcion != 0);
-                opcion = -1;
-            }else if (opcion != 0){
-                System.out.println("Error: Opción NO válida");
-            }
-        }while (opcion != 0);
-
-         */
     }
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -11,7 +13,7 @@
             <Font name="System Bold Italic" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="29.0" prefHeight="41.0" prefWidth="340.0" style="-fx-background-color: white;" text="Torneo Benidorm" textFill="#a427db">
+      <Label layoutX="21.0" layoutY="29.0" prefHeight="41.0" prefWidth="340.0" text="Torneo Benidorm" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="34.0" />
          </font>
@@ -42,21 +44,26 @@
             <TextField prefHeight="24.0" prefWidth="220.0" />
          </children>
       </HBox>
-      <HBox alignment="BOTTOM_RIGHT" layoutX="70.0" layoutY="403.0" prefHeight="182.0" prefWidth="813.0" spacing="10.0">
+      <VBox alignment="BOTTOM_RIGHT" layoutX="696.0" layoutY="330.0" prefHeight="256.0" prefWidth="178.0">
          <children>
-            <Button fx:id="btmCancelar" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: white;" text="Cancelar">
+            <Button fx:id="btmAplicar" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Aplicar">
                <font>
                   <Font name="System Bold" size="13.0" />
-               </font></Button>
-            <Button fx:id="btmAplicar" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: white;" text="Aplicar">
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btmVolver" mnemonicParsing="false" onAction="#volver" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Volver">
                <font>
                   <Font name="System Bold" size="13.0" />
-               </font></Button>
-            <Button fx:id="btmVolver" mnemonicParsing="false" onAction="#volver" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: black; -fx-border-color: grey; -fx-border-width: 2;" text="Volver" textFill="#fffafa">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </AnchorPane>

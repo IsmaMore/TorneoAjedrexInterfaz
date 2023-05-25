@@ -60,6 +60,7 @@ public class Jugador {
             do {
                 jugadores.add(new Jugador(rsJ.getInt(1), rsJ.getString(2), rsJ.getInt(3), rsJ.getInt(4), rsJ.getString(5), rsJ.getString(6), rsJ.getBoolean(7)));
             }while (rsJ.next());
+            rsJ.close();
         }catch (SQLException e){
             e.printStackTrace();
         }

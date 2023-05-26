@@ -2,12 +2,12 @@
     -fx-background-image:url("https://historia.nationalgeographic.com.es/medio/2020/12/14/ajedrez-chino_4621e867_1280x853.jpg");
     -fx-background-size: 100%;
 }
-#fondo2, #fondo3, #fondo4{
+#fondo2,#fondo3, #fondo4, #fondo5{
     -fx-background-image:url("https://img2.rtve.es/v/5859769?w=1600&preview=1618995578695.jpg");
     -fx-background-size: 120%;
 }
 
-#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmVolver, #btmTrans{
+#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmVolverM, #btmTransA, #btmVolverA, #btmVolverB, #btmTransB, #btmVolverT {
     -fx-background-color: white;
     -fx-border-color: white;
     -fx-border-radius: 5px;
@@ -27,15 +27,15 @@
 }
 
 .mantener{
-    -fx-background-color: grey;
+    -fx-background-color: #aaaaaa;
 }
 
-#btmsalida:hover, #btmIniciar:hover, #btmAplicar:hover, #btmCancelar:hover, #btmDesca:hover, #btmModifica:hover, #btmPremio:hover, #btmReset:hover, #btmTablaA:hover, #btmTablaB:hover, #btmVolver:hover, #btmTrans:hover{
-    -fx-background-color: #cdcdcd;
+#btmsalida:hover, #btmIniciar:hover, #btmAplicar:hover, #btmCancelar:hover, #btmDesca:hover, #btmModifica:hover, #btmPremio:hover, #btmReset:hover, #btmTablaA:hover, #btmTablaB:hover, #btmVolverT:hover, #btmVolverM:hover, #btmVolverA:hover, #btmVolverB:hover, #btmTransA:hover, #btmTransB:hover{
+    -fx-background-color: #8a8a8a;
 }
 
-#btmsalida:pressed, #btmIniciar:pressed, #btmAplicar:pressed, #btmCancelar:pressed, #btmDesca:pressed, #btmModifica:pressed, #btmPremio:pressed, #btmReset:pressed, #btmTablaA:pressed, #btmTablaB:pressed, #btmVolver:pressed, #btmTrans:pressed{
-    -fx-background-color: grey;
+#btmsalida:pressed, #btmIniciar:pressed, #btmAplicar:pressed, #btmCancelar:pressed, #btmDesca:pressed, #btmModifica:pressed, #btmPremio:pressed, #btmReset:pressed, #btmTablaA:pressed, #btmTablaB:pressed, #btmVolverT:pressed, #btmVolverM:pressed, #btmVolverA:pressed, #btmVolverB:pressed, #btmTransA:pressed, #btmTransB:pressed{
+    -fx-background-color: #aaaaaa;
 }
 
 

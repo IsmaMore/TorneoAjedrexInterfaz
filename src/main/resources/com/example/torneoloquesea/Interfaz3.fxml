@@ -5,31 +5,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="fondo3" prefHeight="650.0" prefWidth="1000.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.PremioController">
+<AnchorPane id="fondo3" fx:id="fondo3" prefHeight="650.0" prefWidth="1000.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.PremioBController">
    <children>
-      <TableView fx:id="tablaPremio" layoutX="46.0" layoutY="79.0" opacity="0.9" prefHeight="505.0" prefWidth="755.0">
+      <TableView fx:id="tablaPremioB" layoutX="46.0" layoutY="79.0" opacity="0.9" prefHeight="505.0" prefWidth="755.0">
         <columns>
-          <TableColumn fx:id="clmPosicion" prefWidth="109.0" text="Posición" />
-            <TableColumn prefWidth="274.0" text="Nombre" />
-          <TableColumn prefWidth="208.0" text="Tipo" />
-            <TableColumn fx:id="clmCantidad" prefWidth="139.0" text="Cantidad" />
+          <TableColumn fx:id="clmPosicionB" prefWidth="109.0" text="Posición" />
+            <TableColumn fx:id="clmNombreB" prefWidth="274.0" text="Nombre" />
+          <TableColumn fx:id="clmTipoB" prefWidth="208.0" text="Tipo" />
+            <TableColumn fx:id="clmCantidadB" prefWidth="139.0" text="Cantidad" />
         </columns>
       </TableView>
-      <Button fx:id="btmVolver" layoutX="829.0" layoutY="534.0" mnemonicParsing="false" onAction="#volver" prefHeight="50.0" prefWidth="140.0" style="-fx-background-radius: 10;" text="Volver">
+      <Button fx:id="btmVolverB" layoutX="829.0" layoutY="534.0" mnemonicParsing="false" onAction="#volverB" prefHeight="50.0" prefWidth="140.0" style="-fx-background-radius: 10;" text="Volver">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btmTrans" layoutX="829.0" layoutY="79.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="140.0" style="-fx-background-radius: 10;" text="Descargar PDF">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font></Button>
-      <Label fx:id="lblPremio" layoutX="46.0" layoutY="30.0" prefHeight="44.0" prefWidth="300.0" text="Premios" textFill="WHITE">
+      <Label fx:id="lblPremio" layoutX="46.0" layoutY="30.0" prefHeight="44.0" prefWidth="379.0" text="Premios Torneo B" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>

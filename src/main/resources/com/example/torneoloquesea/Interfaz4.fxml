@@ -73,7 +73,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btmVolver" mnemonicParsing="false" onAction="#volver" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Volver">
+            <Button fx:id="btmVolverM" mnemonicParsing="false" onAction="#volverM" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Volver">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

@@ -12,9 +12,9 @@ public class Jugador {
     private int Id_Fide;
     private String Origen;
     private String Alojado;
-    private boolean Participa;
+    private String Participa;
 
-    public Jugador(int Ranking, String Nombre, int Fide, int Id_Fide, String Origen, String Alojado, boolean Participa) {
+    public Jugador(int Ranking, String Nombre, int Fide, int Id_Fide, String Origen, String Alojado, String Participa) {
         this.Ranking = Ranking;
         this.Nombre = Nombre;
         this.Fide = Fide;
@@ -48,7 +48,7 @@ public class Jugador {
         return Alojado;
     }
 
-    public boolean isParticipa() {
+    public String getParticipa() {
         return Participa;
     }
 
@@ -57,8 +57,14 @@ public class Jugador {
         try {
             ResultSet rsJ = cnx.createStatement().executeQuery("select * from jugador");
             rsJ.first();
+            String participa;
             do {
-                jugadores.add(new Jugador(rsJ.getInt(1), rsJ.getString(2), rsJ.getInt(3), rsJ.getInt(4), rsJ.getString(5), rsJ.getString(6), rsJ.getBoolean(7)));
+                if (rsJ.getBoolean(7)){
+                    participa = "Si";
+                }else{
+                    participa = "No";
+                }
+                jugadores.add(new Jugador(rsJ.getInt(1), rsJ.getString(2), rsJ.getInt(3), rsJ.getInt(4), rsJ.getString(5), rsJ.getString(6), participa));
             }while (rsJ.next());
             rsJ.close();
         }catch (SQLException e){

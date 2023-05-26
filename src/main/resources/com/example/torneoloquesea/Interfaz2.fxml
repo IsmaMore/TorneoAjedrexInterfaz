@@ -61,13 +61,6 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="btmDesca" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Descalificar/Inscribir">
-                     <font>
-                        <Font name="System Bold" size="11.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
                   <Button fx:id="btmPremio" mnemonicParsing="false" onAction="#verPremios" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Premios">
                      <VBox.margin>
                         <Insets />
@@ -78,14 +71,14 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="btmReset" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Resetear">
+                  <Button fx:id="btmReset" mnemonicParsing="false" onAction="#resetearTabla" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Resetear">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="btmVolver" alignment="CENTER" mnemonicParsing="false" onAction="#volver" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 12;" text="Volver">
+                  <Button fx:id="btmVolverT" alignment="CENTER" mnemonicParsing="false" onAction="#volver" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 12;" text="Volver">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -93,7 +86,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
-                        <Insets top="75.0" />
+                        <Insets top="180.0" />
                      </VBox.margin>
                   </Button>
                </children>

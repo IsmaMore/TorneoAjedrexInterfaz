@@ -261,6 +261,38 @@ public class Torneo {
         }
     }
 
+    public static void ejecutarMain(){
+        main(null);
+    }
+
+    public static void ejecutarGenerarClasificacionA(){
+        generarPremioEnClasificacion(cnxA);
+    }
+
+    public static void ejecutarGenerarClasificacionB(){
+        generarPremioEnClasificacion(cnxB);
+    }
+
+    public static void ejecutarGenerarJugadoresA(){
+        try {
+            cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
+            generarDatosJugador(cnxA, CSV_JUG_A);
+            cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void ejecutarGenerarJugadoresB(){
+        try {
+            cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
+            generarDatosJugador(cnxB, CSV_JUG_B);
+            cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         try {
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
@@ -273,8 +305,6 @@ public class Torneo {
             generarDatosPremio(cnxB, CSV_PRE_B);
             generarDatosOpta(cnxA);
             generarDatosOpta(cnxB);
-            generarPremioEnClasificacion(cnxA);
-            generarPremioEnClasificacion(cnxB);
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
         } catch (SQLException e){

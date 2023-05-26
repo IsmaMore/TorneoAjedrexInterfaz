@@ -19,6 +19,7 @@ public class Inicio_Torneo extends Application {
     }
 
     public static void main(String[] args) {
+        Torneo.ejecutarMain();
         launch();
     }
 }

@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import org.w3c.dom.events.Event;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -36,7 +37,7 @@ public class TablaController {
     private Label label_premio;
 
     @FXML
-    private Button btmVolver;
+    private Button btmVolverT;
 
     @FXML
     private Button btmModifica;
@@ -86,7 +87,7 @@ public class TablaController {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz1.fxml"));
         Parent root= loader.load();
         Scene scene= new Scene(root);
-        stage=(Stage) btmVolver.getScene().getWindow();
+        stage=(Stage) btmVolverT.getScene().getWindow();
         stage.setScene(scene);
         stage.setTitle("Inicio");
         stage.show();
@@ -106,29 +107,21 @@ public class TablaController {
         colParti.setCellValueFactory(new PropertyValueFactory<>("Participa"));
         if (btmTablaA.isFocused()){
             btmTablaB.getStyleClass().remove("mantener");
-            btmTablaB.getStyleClass().add("colorButTab");
-            btmTablaA.getStyleClass().remove("colorButTab");
             btmTablaA.getStyleClass().add("mantener");
             ObservableList<Jugador> ob = FXCollections.observableArrayList();
-            for (Jugador jugador: Jugador.obtenerJugadores(cnxA)){
-                ob.add(jugador);
-            }
+            ob.addAll(Jugador.obtenerJugadores(cnxA));
             label_premio =new Label("Torneo A");
             label_premio.setFont(new Font("Arial",35));
-            label_premio.setLayoutX(180);
+            label_premio.setLayoutX(200);
             label_premio.setLayoutY(25);
             tablas.setItems(ob);
         }
 
         if (btmTablaB.isFocused()){
             btmTablaA.getStyleClass().remove("mantener");
-            btmTablaA.getStyleClass().add("colorButTab");
-            btmTablaB.getStyleClass().remove("colorButTab");
             btmTablaB.getStyleClass().add("mantener");
             ObservableList<Jugador> ob = FXCollections.observableArrayList();
-            for (Jugador jugador: Jugador.obtenerJugadores(cnxB)){
-                ob.add(jugador);
-            }
+            ob.addAll(Jugador.obtenerJugadores(cnxB));
             label_premio =new Label("Torneo B");
             label_premio.setFont(new Font("Arial",35));
             label_premio.setLayoutX(180);
@@ -151,13 +144,28 @@ public class TablaController {
     @FXML
     protected void verPremios() throws IOException{
         if (!(label_premio == null)) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Interfaz3.fxml"));
+            FXMLLoader loader;
+            if (label_premio.getText().equals("Torneo A")){
+                loader = new FXMLLoader(getClass().getResource("Interfaz5.fxml"));
+            }else {
+                loader = new FXMLLoader(getClass().getResource("Interfaz3.fxml"));
+            }
+
             Parent root = loader.load();
-            Scene scene = new Scene(new Group(label_premio, root));
+            Scene scene = new Scene(root);
             stage = (Stage) btmPremio.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Premios de jugadores");
+            stage.setTitle(label_premio.getText());
             stage.show();
+        }
+    }
+
+    @FXML
+    protected void resetearTabla(){
+        if (btmTablaA.getStyleClass().size() == 3){
+            Torneo.ejecutarGenerarJugadoresA();
+        }else if (btmTablaB.getStyleClass().size() == 3){
+            Torneo.ejecutarGenerarJugadoresB();
         }
     }
 }

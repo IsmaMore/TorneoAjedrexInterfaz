@@ -30,19 +30,15 @@ public class ModificarController implements Initializable {
         }
     }
 
-    static String torneo;
+    String torneo, Nombre, Origen, Alojado, Participa;
+
+    int Ranking;
 
     @FXML
     private Button btnTA;
 
     @FXML
     private Button btnTB;
-
-    @FXML
-    private Button btmBuscar;
-
-    @FXML
-    private Button btmAplicar;
 
     @FXML
     private TextField tfId;
@@ -86,86 +82,136 @@ public class ModificarController implements Initializable {
     @FXML
     private Button btmVolverM;
 
-    @FXML
-    protected void volverA() throws IOException {
+    private void volver(Button btn) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz2.fxml"));
         Parent root= loader.load();
         Scene scene= new Scene(root);
-        Stage stage=(Stage) btmVolverA.getScene().getWindow();
+        Stage stage=(Stage) btn.getScene().getWindow();
         stage.setScene(scene);
         stage.setTitle("Torneos");
         stage.show();
     }
+
+    @FXML
+    protected void volverA() throws IOException {
+        volver(btmVolverA);
+    }
+
     @FXML
     protected void volverB() throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz2.fxml"));
-        Parent root= loader.load();
-        Scene scene= new Scene(root);
-        Stage stage=(Stage) btmVolverB.getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("Torneos");
-        stage.show();
+        volver(btmVolverB);
     }
     @FXML
     protected void volverM() throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz2.fxml"));
-        Parent root= loader.load();
-        Scene scene= new Scene(root);
-        Stage stage=(Stage) btmVolverM.getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("Torneos");
-        stage.show();
+        volver(btmVolverM);
     }
 
     @FXML
     protected void aplicarCambios() {
-
+        if (Ranking > 0){
+            if (Ranking == Integer.parseInt(tfId.getText())){
+                if (!tfNombre.getText().equals("")) {
+                    if (!Nombre.equals(tfNombre.getText()) || !(Origen == null || Origen.equals(tfOrigen.getText())) || !Alojado.equals(cbAlojado.getValue()) || !Participa.equals(cbParticipa.getValue())) {
+                        boolean cambio;
+                        if (torneo.equals("A")) {
+                            cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);
+                        } else {
+                            cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxB);
+                        }
+                        if (cambio) {
+                            labelError.setText("¡SE HAN APLICADO LOS CAMBIOS!");
+                            labelError.setVisible(true);
+                        } else {
+                            labelError.setText("¡NO SE HAN APLICADO LOS CAMBIOS!");
+                            labelError.setVisible(true);
+                        }
+                    } else {
+                        labelError.setText("¡NO HAS MODIFICADO NINGÚN CAMPO!");
+                        labelError.setVisible(true);
+                    }
+                }else {
+                    labelError.setText("¡NOMBRE NO PUEDE ESTAR VACÍO!");
+                    labelError.setVisible(true);
+                }
+            }else {
+                labelError.setText("¡NO SE PUEDE MODIFICAR RANKING!");
+                labelError.setVisible(true);
+            }
+        }else {
+            labelError.setText("¡NO SE PUDO APLICAR CAMBIOS!");
+            labelError.setVisible(true);
+        }
     }
 
     @FXML
     protected void buscarJugador(){
-        if (!tfId.getText().isEmpty()) {
-            ResultSet rs;
-            try {
-                if (torneo.equals("A")){
-                    rs = buscarJugador(cnxA);
-                } else{
-                    rs = buscarJugador(cnxB);
-                }
-                if (rs.first()){
-                    tfNombre.setText(rs.getString(1));
-                    tfOrigen.setText(rs.getString(2));
-                    cbAlojado.setValue(rs.getString(3));
-                    String sem;
-                    if (rs.getBoolean(4)){
-                        sem = "Si";
-                    }else {
-                        sem = "No";
+        if (!torneo.equals("")) {
+            if (!tfId.getText().isEmpty()) {
+                ResultSet rs;
+                try {
+                    if (torneo.equals("A")) {
+                        rs = obtenerJugadorUnico(cnxA);
+                    } else {
+                        rs = obtenerJugadorUnico(cnxB);
                     }
-                    cbParticipa.setValue(sem);
-                    setVisibility(true);
-
-                }else {
-                    labelError.setText("Error: Jugador no encontrado");
-                    labelError.setVisible(true);
+                    if (rs.first()) {
+                        Ranking = Integer.parseInt(tfId.getText());
+                        Nombre = rs.getString(1);
+                        tfNombre.setText(Nombre);
+                        Origen = rs.getString(2);
+                        tfOrigen.setText(Origen);
+                        Alojado = rs.getString(3);
+                        cbAlojado.setValue(Alojado);
+                        if (rs.getBoolean(4)) {
+                            Participa = "Si";
+                        } else {
+                            Participa = "No";
+                        }
+                        cbParticipa.setValue(Participa);
+                        setVisibility(true);
+                        labelError.setVisible(false);
+                    } else {
+                        Ranking = 0;
+                        Nombre = "";
+                        Origen = "";
+                        Alojado = "";
+                        Participa = "";
+                        tfNombre.setText("");
+                        tfOrigen.setText("");
+                        cbAlojado.setValue("");
+                        cbParticipa.setValue("");
+                        labelError.setText("¡JUGADOR NO ENCONTRADO!");
+                        labelError.setVisible(true);
+                        setVisibility(false);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            }catch (SQLException e){
-                e.printStackTrace();
+            } else {
+                labelError.setText("¡INTRODUCIR RANKING(ID)!");
+                labelError.setVisible(true);
             }
+        }else {
+            labelError.setText("¡SELECCIONA UN TORNEO!");
+            labelError.setVisible(true);
         }
     }
 
-    private ResultSet buscarJugador(Connection cnxB) throws SQLException {
-        return Jugador.modificarJugador(Integer.parseInt(tfId.getText()), cnxB);
+    private ResultSet obtenerJugadorUnico(Connection cnxB) throws SQLException {
+        return Jugador.buscarJugadorUnico(Integer.parseInt(tfId.getText()), cnxB);
+    }
+
+    private void mostrarID(){
+        setEmptyValues();
+        tfId.setVisible(true);
+        labelId.setVisible(true);
+        setVisibility(false);
     }
 
     @FXML
     protected void mostrarIDA(){
-        setEmptyValues();
-        tfId.setVisible(true);
-        labelId.setVisible(true);
+        mostrarID();
         torneo = "A";
-        setVisibility(false);
         if (btnTB.getStyleClass().size() == 3){
             btnTB.getStyleClass().remove("mantener");
         }
@@ -176,12 +222,8 @@ public class ModificarController implements Initializable {
 
     @FXML
     protected void mostrarIDB(){
-        setEmptyValues();
-        tfId.setText("");
-        tfId.setVisible(true);
-        labelId.setVisible(true);
+        mostrarID();
         torneo = "B";
-        setVisibility(false);
         if (btnTA.getStyleClass().size() == 3){
             btnTA.getStyleClass().remove("mantener");
         }
@@ -211,6 +253,12 @@ public class ModificarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        torneo = "";
+        Ranking = 0;
+        Nombre = "";
+        Origen = "";
+        Alojado = "";
+        Participa = "";
         cbAlojado.getItems().addAll(hotel);
         cbParticipa.getItems().addAll(hotel);
         labelId.setVisible(false);

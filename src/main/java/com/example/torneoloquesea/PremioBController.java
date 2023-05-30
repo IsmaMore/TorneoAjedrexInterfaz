@@ -43,9 +43,6 @@ public class PremioBController extends  ModificarController implements Initializ
     @FXML
     private TableColumn<Premio, String> clmCantidadB;
 
-    @FXML
-    private Label lblPremio;
-
     @Override
     protected void volverB() throws IOException {
         super.volverB();
@@ -61,7 +58,6 @@ public class PremioBController extends  ModificarController implements Initializ
         ObservableList<Premio> ob = FXCollections.observableArrayList();
         ob.addAll(Premio.obtenerPremios(cnxB));
         tablaPremioB.setItems(ob);
-        //System.out.println(Stage.("label_premio"));
     }
 }
 

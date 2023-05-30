@@ -57,7 +57,6 @@ public class PremioAController extends  ModificarController implements Initializ
         ObservableList<Premio> ob = FXCollections.observableArrayList();
         ob.addAll(Premio.obtenerPremios(cnxA));
         tablaPremioA.setItems(ob);
-        //System.out.println(Stage.("label_premio"));
     }
 }
 

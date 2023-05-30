@@ -4,21 +4,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import org.w3c.dom.events.Event;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class TablaController {
+public class TablaController implements Initializable{
 
     static Connection cnxA;
     static Connection cnxB;
@@ -49,13 +50,7 @@ public class TablaController {
     private Button btmTablaB;
 
     @FXML
-    private Button btmDesca;
-
-    @FXML
     private Button btmPremio;
-
-    @FXML
-    private Button btmReset;
 
     @FXML
     private TableView<Jugador> tablas = new TableView<>();
@@ -105,7 +100,7 @@ public class TablaController {
         colOrigen.setCellValueFactory(new PropertyValueFactory<>("Origen"));
         colAlojado.setCellValueFactory(new PropertyValueFactory<>("Alojado"));
         colParti.setCellValueFactory(new PropertyValueFactory<>("Participa"));
-        if (btmTablaA.isFocused()){
+        if (btmTablaA.isFocused() || label_premio.getText().equals("Torneo A")){
             if (btmTablaB.getStyleClass().size() == 3){
                 btmTablaB.getStyleClass().remove("mantener");
             }
@@ -121,7 +116,7 @@ public class TablaController {
             tablas.setItems(ob);
         }
 
-        if (btmTablaB.isFocused()){
+        if (btmTablaB.isFocused() || label_premio.getText().equals("Torneo B")){
             if (btmTablaA.getStyleClass().size() == 3){
                 btmTablaA.getStyleClass().remove("mantener");
             }
@@ -151,7 +146,7 @@ public class TablaController {
 
     @FXML
     protected void verPremios() throws IOException{
-        if (!(label_premio == null)) {
+        if (!(label_premio.getText().equals(""))) {
             FXMLLoader loader;
             if (label_premio.getText().equals("Torneo A")){
                 loader = new FXMLLoader(getClass().getResource("Interfaz5.fxml"));
@@ -172,8 +167,16 @@ public class TablaController {
     protected void resetearTabla(){
         if (btmTablaA.getStyleClass().size() == 3){
             Torneo.ejecutarGenerarJugadoresA();
+            Torneo.ejecutarGenerarOptaA();
         }else if (btmTablaB.getStyleClass().size() == 3){
             Torneo.ejecutarGenerarJugadoresB();
+            Torneo.ejecutarGenerarOptaB();
         }
+        mostrarTabla();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        label_premio = new Label("");
     }
 }

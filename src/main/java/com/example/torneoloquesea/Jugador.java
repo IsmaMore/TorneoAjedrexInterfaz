@@ -1,6 +1,7 @@
 package com.example.torneoloquesea;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -73,12 +74,31 @@ public class Jugador {
         return jugadores;
     }
 
-    public static ResultSet modificarJugador(int id, Connection cnx){
+    public static ResultSet buscarJugadorUnico(int Ranking, Connection cnx){
         try {
-            return cnx.createStatement().executeQuery("select Nombre, Origen, Alojado, Participa from jugador where Ranking = " + id);
+            return cnx.createStatement().executeQuery("select Nombre, Origen, Alojado, Participa from jugador where Ranking = " + Ranking);
         }catch (SQLException e){
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean modificarJugador(int Ranking, String Nombre, String Origen, String Alojado, String Participa, Connection cnx){
+        try{
+            PreparedStatement ps = cnx.prepareStatement("update jugador set Nombre = ?, Origen = ?, Alojado = ?, Participa = ? where Ranking = ?");
+            boolean boolParticipa;
+            boolParticipa = Participa.equals("Si");
+            ps.setString(1, Nombre);
+            ps.setString(2, Origen);
+            ps.setString(3, Alojado);
+            ps.setBoolean(4, boolParticipa);
+            ps.setInt(5, Ranking);
+            int cambio = ps.executeUpdate();
+            Torneo.generarDatosOpta(cnx);
+            return cambio == 1;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return true;
     }
 }

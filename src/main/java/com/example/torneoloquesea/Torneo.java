@@ -162,38 +162,6 @@ public class Torneo {
         }
     }
 
-    public void descInsJugador(Connection cnx, int Ranking){
-        try {
-            Statement st = cnx.createStatement();
-            ResultSet rs = cnx.createStatement().executeQuery("select Participa from jugador where = " + Ranking);
-            rs.first();
-            if (rs.getBoolean(1)){
-                st.executeUpdate("update jugador set Participa = false where Ranking = " + Ranking);
-            }else {
-                st.executeUpdate("update jugador set Participa = true where Ranking = " + Ranking);
-            }
-            rs.close();
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void borrarDatos(Connection cnx){
-        try {
-            cnx.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
-            Statement st = cnx.createStatement();
-            int res = st.executeUpdate("delete from jugador");
-            if (res == 0){
-                System.out.println("No se ha podido eliminar la tabla");
-            }else {
-                System.out.println("Se ha eliminado " + res + " filas");
-            }
-            cnx.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-
     public static void generarPremioEnClasificacion(Connection cnx){
         try {
             Statement st = cnx.createStatement();
@@ -271,6 +239,14 @@ public class Torneo {
 
     public static void ejecutarGenerarClasificacionB(){
         generarPremioEnClasificacion(cnxB);
+    }
+
+    public static void ejecutarGenerarOptaA(){
+        generarDatosOpta(cnxA);
+    }
+
+    public static void ejecutarGenerarOptaB(){
+        generarDatosOpta(cnxB);
     }
 
     public static void ejecutarGenerarJugadoresA(){

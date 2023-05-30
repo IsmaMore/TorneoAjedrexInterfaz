@@ -7,7 +7,7 @@
     -fx-background-size: 120%;
 }
 
-#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmVolverM, #btmTransA, #btmVolverA, #btmVolverB, #btmTransB, #btmVolverT {
+#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmVolverM, #btmTransA, #btmVolverA, #btmVolverB, #btmTransB, #btmVolverT, #btmBuscar {
     -fx-background-color: white;
     -fx-border-color: white;
     -fx-border-radius: 5px;

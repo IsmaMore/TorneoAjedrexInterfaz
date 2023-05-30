@@ -73,4 +73,12 @@ public class Jugador {
         return jugadores;
     }
 
+    public static ResultSet modificarJugador(int id, Connection cnx){
+        try {
+            return cnx.createStatement().executeQuery("select Nombre, Origen, Alojado, Participa from jugador where Ranking = " + id);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

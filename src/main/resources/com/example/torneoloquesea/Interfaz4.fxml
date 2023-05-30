@@ -8,7 +8,7 @@
 
 <AnchorPane id="fondo4" prefHeight="650.0" prefWidth="1000.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.ModificarController">
    <children>
-      <Label fx:id="NombreJugador" layoutX="21.0" layoutY="79.0" prefHeight="41.0" prefWidth="511.0" text="Jugador">
+      <Label fx:id="labelTorneo" layoutX="21.0" layoutY="79.0" prefHeight="41.0" prefWidth="511.0" text="Modificar Jugador" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -18,21 +18,43 @@
             <Font name="System Bold Italic" size="34.0" />
          </font>
       </Label>
-      <VBox layoutX="35.0" layoutY="132.0" prefHeight="280.0" prefWidth="340.0">
+      <HBox alignment="CENTER" layoutX="400.0" layoutY="50.0" prefHeight="100.0" prefWidth="406.0" spacing="70.0">
          <children>
-            <Label text="Nombre" textFill="#1e1c1c">
+            <Button fx:id="btnTA" mnemonicParsing="false" onAction="#mostrarIDA" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10;" styleClass="colorButTab" stylesheets="@estilo1.css" text="Torneo A" textFill="#b50303">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnTB" mnemonicParsing="false" onAction="#mostrarIDB" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10;" styleClass="colorButTab" stylesheets="@estilo1.css" text="Torneo B" textFill="#0202a8">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="35.0" layoutY="132.0" prefHeight="517.0" prefWidth="441.0">
+         <children>
+            <Label fx:id="labelId" text="ID" textFill="#0202a8">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
-            </Label>
-            <TextField prefHeight="24.0" prefWidth="197.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <TextField fx:id="tfId" prefHeight="24.0" prefWidth="51.0" promptText="Introduce ID/Rankind">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></TextField>
-            <Label prefHeight="20.0" prefWidth="74.0" text="Origen" textFill="#161717">
+            <Label fx:id="labelNombre" text="Nombre" textFill="#b50303">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -40,11 +62,11 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Label>
-            <TextField prefHeight="24.0" prefWidth="220.0">
+            <TextField fx:id="tfNombre" prefHeight="24.0" prefWidth="89.0" promptText="Introduce nombre">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></TextField>
-            <Label text="Alojado" textFill="#0a0a0a">
+            <Label fx:id="labelOrigen" prefHeight="20.0" prefWidth="74.0" text="Origen" textFill="#0202a8">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -52,18 +74,60 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Label>
-            <ChoiceBox prefWidth="150.0" style="-fx-background-color: white; -fx-background-radius: 2px; -fx-border-radius: 1px; -fx-border-color: black; -fx-border-width: 1px;">
+            <TextField fx:id="tfOrigen" prefHeight="24.0" prefWidth="220.0" promptText="Introduce lugar de origen">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></TextField>
+            <Label fx:id="labelAlojado" text="Alojado" textFill="#b50303">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="cbAlojado" prefWidth="150.0" style="-fx-background-color: white; -fx-background-radius: 2px; -fx-border-color: black;">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></ChoiceBox>
+            <Label fx:id="labelParticipa" text="Participa" textFill="#0202a8">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin></Label>
+            <ChoiceBox fx:id="cbParticipa" prefWidth="150.0" style="-fx-background-color: white; -fx-background-radius: 2px; -fx-border-color: black;">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></ChoiceBox>
+            <Label fx:id="labelError" prefHeight="30.0" prefWidth="454.0" text="Label" textFill="#b50303">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox alignment="BOTTOM_RIGHT" layoutX="696.0" layoutY="330.0" prefHeight="256.0" prefWidth="178.0">
+      <VBox alignment="BOTTOM_RIGHT" layoutX="797.0" layoutY="307.0" prefHeight="315.0" prefWidth="176.0" spacing="10.0">
          <children>
-            <Button fx:id="btmAplicar" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Aplicar Cambios">
+            <Button fx:id="btmBuscar" layoutX="38.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarJugador" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: white;" stylesheets="@estilo1.css" text="Buscar Jugador">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btmAplicar" mnemonicParsing="false" onAction="#aplicarCambios" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Aplicar Cambios">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

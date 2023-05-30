@@ -106,8 +106,12 @@ public class TablaController {
         colAlojado.setCellValueFactory(new PropertyValueFactory<>("Alojado"));
         colParti.setCellValueFactory(new PropertyValueFactory<>("Participa"));
         if (btmTablaA.isFocused()){
-            btmTablaB.getStyleClass().remove("mantener");
-            btmTablaA.getStyleClass().add("mantener");
+            if (btmTablaB.getStyleClass().size() == 3){
+                btmTablaB.getStyleClass().remove("mantener");
+            }
+            if (btmTablaA.getStyleClass().size() == 2){
+                btmTablaA.getStyleClass().add("mantener");
+            }
             ObservableList<Jugador> ob = FXCollections.observableArrayList();
             ob.addAll(Jugador.obtenerJugadores(cnxA));
             label_premio =new Label("Torneo A");
@@ -118,8 +122,12 @@ public class TablaController {
         }
 
         if (btmTablaB.isFocused()){
-            btmTablaA.getStyleClass().remove("mantener");
-            btmTablaB.getStyleClass().add("mantener");
+            if (btmTablaA.getStyleClass().size() == 3){
+                btmTablaA.getStyleClass().remove("mantener");
+            }
+            if (btmTablaB.getStyleClass().size() == 2){
+                btmTablaB.getStyleClass().add("mantener");
+            }
             ObservableList<Jugador> ob = FXCollections.observableArrayList();
             ob.addAll(Jugador.obtenerJugadores(cnxB));
             label_premio =new Label("Torneo B");

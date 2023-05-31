@@ -187,8 +187,10 @@ public class ModificarController implements Initializable {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            } else {
-                labelError.setText("¡INTRODUCIR RANKING(ID)!");
+            }else if (tfNombre.getText().equals("")){
+
+            }else {
+                labelError.setText("¡INTRODUCIR RANKING(ID) O NOMBRE!");
                 labelError.setVisible(true);
             }
         }else {
@@ -203,9 +205,11 @@ public class ModificarController implements Initializable {
 
     private void mostrarID(){
         setEmptyValues();
+        setVisibility(false);
         tfId.setVisible(true);
         labelId.setVisible(true);
-        setVisibility(false);
+        labelNombre.setVisible(true);
+        tfNombre.setVisible(true);
     }
 
     @FXML
@@ -241,8 +245,6 @@ public class ModificarController implements Initializable {
     }
 
     private void setVisibility(boolean bol) {
-        labelNombre.setVisible(bol);
-        tfNombre.setVisible(bol);
         labelOrigen.setVisible(bol);
         tfOrigen.setVisible(bol);
         labelAlojado.setVisible(bol);

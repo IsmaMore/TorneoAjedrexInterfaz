@@ -109,9 +109,9 @@ public class ModificarController implements Initializable {
     @FXML
     protected void aplicarCambios() {
         if (Ranking > 0){
-            if (Ranking == Integer.parseInt(tfId.getText())){
-                if (!tfNombre.getText().equals("")) {
-                    if (!Nombre.equals(tfNombre.getText()) || !(Origen == null || Origen.equals(tfOrigen.getText())) || !Alojado.equals(cbAlojado.getValue()) || !Participa.equals(cbParticipa.getValue())) {
+            if (tfId.getText().matches("\\d+") && Ranking == Integer.parseInt(tfId.getText())){
+                if (!tfNombre.getText().isEmpty()) {
+                    if (!(Nombre.equals(tfNombre.getText()) || tfNombre.getText().isEmpty()) || !(Origen == null || Origen.equals(tfOrigen.getText())) || !Alojado.equals(cbAlojado.getValue()) || !Participa.equals(cbParticipa.getValue())) {
                         boolean cambio;
                         if (torneo.equals("A")) {
                             cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);
@@ -119,27 +119,21 @@ public class ModificarController implements Initializable {
                             cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxB);
                         }
                         if (cambio) {
-                            labelError.setText("¡SE HAN APLICADO LOS CAMBIOS!");
-                            labelError.setVisible(true);
+                            mostrarError("¡SE HAN APLICADO LOS CAMBIOS!");
                         } else {
-                            labelError.setText("¡NO SE HAN APLICADO LOS CAMBIOS!");
-                            labelError.setVisible(true);
+                            mostrarError("¡NO SE HAN APLICADO LOS CAMBIOS!");
                         }
                     } else {
-                        labelError.setText("¡NO HAS MODIFICADO NINGÚN CAMPO!");
-                        labelError.setVisible(true);
+                        mostrarError("¡NO HAS MODIFICADO NINGÚN CAMPO!");
                     }
                 }else {
-                    labelError.setText("¡NOMBRE NO PUEDE ESTAR VACÍO!");
-                    labelError.setVisible(true);
+                    mostrarError("¡NOMBRE NO PUEDE ESTAR VACÍO!");
                 }
             }else {
-                labelError.setText("¡NO SE PUEDE MODIFICAR RANKING!");
-                labelError.setVisible(true);
+                mostrarError("¡NO SE PUEDE MODIFICAR RANKING!");
             }
         }else {
-            labelError.setText("¡NO SE PUDO APLICAR CAMBIOS!");
-            labelError.setVisible(true);
+            mostrarError("¡NO SE PUDO APLICAR CAMBIOS!");
         }
     }
 
@@ -168,8 +162,7 @@ public class ModificarController implements Initializable {
                     e.printStackTrace();
                 }
             }else {
-                labelError.setText("¡INTRODUCIR RANKING(ID) O NOMBRE!");
-                labelError.setVisible(true);
+                mostrarError("¡INTRODUCIR RANKING(ID) O NOMBRE!");
             }
             if (rs != null) {
                 try {
@@ -193,44 +186,53 @@ public class ModificarController implements Initializable {
                             setVisibility(true);
                             labelError.setVisible(false);
                         }else {
-                            Ranking = 0;
-                            Nombre = "";
-                            Origen = "";
-                            Alojado = "";
-                            Participa = "";
-                            tfOrigen.setText("");
-                            cbAlojado.setValue("");
-                            cbParticipa.setValue("");
-                            labelError.setText("¡HAY MUCHOS RESULTADOS!");
-                            labelError.setVisible(true);
+                            vaciarDatos();
+                            mostrarError("¡HAY MUCHOS RESULTADOS!");
                             setVisibility(false);
                         }
                     } else {
-                        Ranking = 0;
-                        Nombre = "";
-                        Origen = "";
-                        Alojado = "";
-                        Participa = "";
-                        tfOrigen.setText("");
-                        cbAlojado.setValue("");
-                        cbParticipa.setValue("");
-                        labelError.setText("¡JUGADOR NO ENCONTRADO!");
-                        labelError.setVisible(true);
+                        vaciarDatos();
+                        mostrarError("¡JUGADOR NO ENCONTRADO!");
                         setVisibility(false);
                     }
 
                 }catch (SQLException e){
                     e.printStackTrace();
                 }
+            }else {
+                vaciarDatos();
+                tfNombre.setText("");
+                mostrarError("¡RANKING(ID) NO VÁLIDO!");
+                setVisibility(false);
             }
         }else {
-            labelError.setText("¡SELECCIONA UN TORNEO!");
-            labelError.setVisible(true);
+            vaciarDatos();
+            mostrarError("¡SELECCIONA UN TORNEO!");
         }
     }
 
+    private void mostrarError(String s) {
+        labelError.setText(s);
+        labelError.setVisible(true);
+    }
+
+    private void vaciarDatos() {
+        Ranking = 0;
+        Nombre = "";
+        Origen = "";
+        Alojado = "";
+        Participa = "";
+        tfOrigen.setText("");
+        cbAlojado.setValue("");
+        cbParticipa.setValue("");
+    }
+
+
     private ResultSet obtenerJugadorUnico(Connection cnx) throws SQLException {
-        return Jugador.buscarJugadorUnico(Integer.parseInt(tfId.getText()), cnx);
+        if (tfId.getText().matches("\\d+")){
+            return Jugador.buscarJugadorUnico(Integer.parseInt(tfId.getText()), cnx);
+        }
+        return null;
     }
 
     private ResultSet obtenerJugadorPorNombre(Connection cnx) throws SQLException {

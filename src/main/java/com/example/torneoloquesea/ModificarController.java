@@ -83,7 +83,7 @@ public class ModificarController implements Initializable {
     private Button btmVolverM;
 
     private void volver(Button btn) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz2.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("InterfazTabla.fxml"));
         Parent root= loader.load();
         Scene scene= new Scene(root);
         Stage stage=(Stage) btn.getScene().getWindow();
@@ -145,38 +145,72 @@ public class ModificarController implements Initializable {
 
     @FXML
     protected void buscarJugador(){
+        ResultSet rs = null;
         if (!torneo.equals("")) {
             if (!tfId.getText().isEmpty()) {
-                ResultSet rs;
                 try {
                     if (torneo.equals("A")) {
                         rs = obtenerJugadorUnico(cnxA);
                     } else {
                         rs = obtenerJugadorUnico(cnxB);
                     }
-                    if (rs.first()) {
-                        Ranking = Integer.parseInt(tfId.getText());
-                        Nombre = rs.getString(1);
-                        tfNombre.setText(Nombre);
-                        Origen = rs.getString(2);
-                        tfOrigen.setText(Origen);
-                        Alojado = rs.getString(3);
-                        cbAlojado.setValue(Alojado);
-                        if (rs.getBoolean(4)) {
-                            Participa = "Si";
-                        } else {
-                            Participa = "No";
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else if (!tfNombre.getText().isEmpty()){
+                try {
+                    if (torneo.equals("A")) {
+                        rs = obtenerJugadorPorNombre(cnxA);
+                    } else {
+                        rs = obtenerJugadorPorNombre(cnxB);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                labelError.setText("¡INTRODUCIR RANKING(ID) O NOMBRE!");
+                labelError.setVisible(true);
+            }
+            if (rs != null) {
+                try {
+                    if (rs.last()) {
+                        int size = rs.getRow();
+                        if (size == 1) {
+                            Ranking = rs.getInt(5);
+                            tfId.setText(String.valueOf(Ranking));
+                            Nombre = rs.getString(1);
+                            tfNombre.setText(Nombre);
+                            Origen = rs.getString(2);
+                            tfOrigen.setText(Origen);
+                            Alojado = rs.getString(3);
+                            cbAlojado.setValue(Alojado);
+                            if (rs.getBoolean(4)) {
+                                Participa = "Si";
+                            } else {
+                                Participa = "No";
+                            }
+                            cbParticipa.setValue(Participa);
+                            setVisibility(true);
+                            labelError.setVisible(false);
+                        }else {
+                            Ranking = 0;
+                            Nombre = "";
+                            Origen = "";
+                            Alojado = "";
+                            Participa = "";
+                            tfOrigen.setText("");
+                            cbAlojado.setValue("");
+                            cbParticipa.setValue("");
+                            labelError.setText("¡HAY MUCHOS RESULTADOS!");
+                            labelError.setVisible(true);
+                            setVisibility(false);
                         }
-                        cbParticipa.setValue(Participa);
-                        setVisibility(true);
-                        labelError.setVisible(false);
                     } else {
                         Ranking = 0;
                         Nombre = "";
                         Origen = "";
                         Alojado = "";
                         Participa = "";
-                        tfNombre.setText("");
                         tfOrigen.setText("");
                         cbAlojado.setValue("");
                         cbParticipa.setValue("");
@@ -184,14 +218,10 @@ public class ModificarController implements Initializable {
                         labelError.setVisible(true);
                         setVisibility(false);
                     }
-                } catch (SQLException e) {
+
+                }catch (SQLException e){
                     e.printStackTrace();
                 }
-            }else if (tfNombre.getText().equals("")){
-
-            }else {
-                labelError.setText("¡INTRODUCIR RANKING(ID) O NOMBRE!");
-                labelError.setVisible(true);
             }
         }else {
             labelError.setText("¡SELECCIONA UN TORNEO!");
@@ -199,8 +229,12 @@ public class ModificarController implements Initializable {
         }
     }
 
-    private ResultSet obtenerJugadorUnico(Connection cnxB) throws SQLException {
-        return Jugador.buscarJugadorUnico(Integer.parseInt(tfId.getText()), cnxB);
+    private ResultSet obtenerJugadorUnico(Connection cnx) throws SQLException {
+        return Jugador.buscarJugadorUnico(Integer.parseInt(tfId.getText()), cnx);
+    }
+
+    private ResultSet obtenerJugadorPorNombre(Connection cnx) throws SQLException {
+        return Jugador.buscarJugadorPorNombre(tfNombre.getText(), cnx);
     }
 
     private void mostrarID(){

@@ -52,7 +52,7 @@ public class PremioAController extends  ModificarController implements Initializ
     protected void exportarA(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("PremiosA.txt"));
-            int espNombre = 40, espTipo_Premio = 25, espInt = 8;
+            int espNombre = 40, espTipo_Premio = 25;
             bw.write(" Posicion | Nombre                                   | Tipo_Premio               | Cantidad");
             bw.newLine();
             bw.write(" ---------|------------------------------------------|---------------------------|---------");

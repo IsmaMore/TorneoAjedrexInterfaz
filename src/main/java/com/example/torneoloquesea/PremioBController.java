@@ -55,7 +55,7 @@ public class PremioBController extends  ModificarController implements Initializ
     protected void exportarB(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("PremiosB.txt"));
-            int espNombre = 40, espTipo_Premio = 25, espInt = 8;
+            int espNombre = 40, espTipo_Premio = 25;
             bw.write(" Posicion | Nombre                                   | Tipo_Premio               | Cantidad");
             bw.newLine();
             bw.write(" ---------|------------------------------------------|---------------------------|---------");

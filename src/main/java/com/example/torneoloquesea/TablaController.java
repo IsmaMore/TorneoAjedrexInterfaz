@@ -79,7 +79,7 @@ public class TablaController implements Initializable{
 
     @FXML
     protected void volver() throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz1.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("InterfazInicio.fxml"));
         Parent root= loader.load();
         Scene scene= new Scene(root);
         stage=(Stage) btmVolverT.getScene().getWindow();
@@ -135,7 +135,7 @@ public class TablaController implements Initializable{
 
     @FXML
     protected void modificar() throws IOException{
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz4.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("InterfazModificar.fxml"));
         Parent root= loader.load();
         Scene scene= new Scene(root);
         stage=(Stage) btmModifica.getScene().getWindow();
@@ -149,9 +149,9 @@ public class TablaController implements Initializable{
         if (!(label_premio.getText().equals(""))) {
             FXMLLoader loader;
             if (label_premio.getText().equals("Torneo A")){
-                loader = new FXMLLoader(getClass().getResource("Interfaz5.fxml"));
+                loader = new FXMLLoader(getClass().getResource("InterfazPremiosA.fxml"));
             }else {
-                loader = new FXMLLoader(getClass().getResource("Interfaz3.fxml"));
+                loader = new FXMLLoader(getClass().getResource("InterfazPremiosB.fxml"));
             }
 
             Parent root = loader.load();

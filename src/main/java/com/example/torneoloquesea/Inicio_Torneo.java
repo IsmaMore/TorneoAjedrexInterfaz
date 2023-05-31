@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Inicio_Torneo extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Inicio_Torneo.class.getResource("Interfaz1.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Inicio_Torneo.class.getResource("InterfazInicio.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(this.getClass().getResource("estilo1.css").toExternalForm());
         stage.setTitle("Inicio");

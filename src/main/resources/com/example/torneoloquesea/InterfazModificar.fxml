@@ -65,7 +65,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tfNombre" prefHeight="24.0" prefWidth="89.0" promptText="Introduce nombre">
+            <TextField fx:id="tfNombre" prefHeight="24.0" prefWidth="89.0" promptText="Introduce nombre del jugador que quieras modificar">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></TextField>

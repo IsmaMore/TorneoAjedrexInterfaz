@@ -76,7 +76,17 @@ public class Jugador {
 
     public static ResultSet buscarJugadorUnico(int Ranking, Connection cnx){
         try {
-            return cnx.createStatement().executeQuery("select Nombre, Origen, Alojado, Participa from jugador where Ranking = " + Ranking);
+            return cnx.createStatement().executeQuery("select Nombre, Origen, Alojado, Participa, Ranking from jugador where Ranking = " + Ranking);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ResultSet buscarJugadorPorNombre(String Nombre, Connection cnx){
+        Nombre = "\"" + "%" + Nombre + "%" + "\"";
+        try {
+            return cnx.createStatement().executeQuery("select Nombre, Origen, Alojado, Participa, Ranking from jugador where Nombre like " + Nombre);
         }catch (SQLException e){
             e.printStackTrace();
         }

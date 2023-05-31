@@ -16,7 +16,7 @@ public class InicioController {
     private Button btmIniciar;
     @FXML
     public void entrarTorneo() throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("Interfaz2.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("InterfazTabla.fxml"));
         Parent root= loader.load();
         Scene scene= new Scene(root);
             Stage stage = (Stage) btmIniciar.getScene().getWindow();

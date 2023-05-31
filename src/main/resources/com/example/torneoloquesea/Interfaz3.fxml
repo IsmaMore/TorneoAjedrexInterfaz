@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -7,6 +8,11 @@
 
 <AnchorPane id="fondo3" fx:id="fondo3" prefHeight="650.0" prefWidth="1000.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.PremioBController">
    <children>
+      <Label fx:id="lblPremio" layoutX="46.0" layoutY="30.0" prefHeight="44.0" prefWidth="379.0" text="Premios Torneo B" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
       <TableView fx:id="tablaPremioB" layoutX="46.0" layoutY="79.0" opacity="0.9" prefHeight="505.0" prefWidth="755.0">
         <columns>
           <TableColumn fx:id="clmPosicionB" prefWidth="109.0" text="Posición" />
@@ -15,17 +21,36 @@
             <TableColumn fx:id="clmCantidadB" prefWidth="139.0" text="Cantidad" />
         </columns>
       </TableView>
-      <Button fx:id="btmVolverB" layoutX="829.0" layoutY="534.0" mnemonicParsing="false" onAction="#volverB" prefHeight="50.0" prefWidth="140.0" style="-fx-background-radius: 10;" text="Volver">
+      <VBox alignment="BOTTOM_CENTER" layoutX="800.0" layoutY="63.0" prefHeight="519.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnExportarB" mnemonicParsing="false" onAction="#exportarB" prefHeight="70.0" prefWidth="140.0" style="-fx-background-radius: 10;" text="Exportar">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btmVolverB" mnemonicParsing="false" onAction="#volverB" prefHeight="50.0" prefWidth="140.0" style="-fx-background-radius: 10;" text="Volver">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="380.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Label fx:id="labelExB" layoutX="46.0" layoutY="596.0" prefHeight="44.0" prefWidth="561.0" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 10;" text="Label">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Label fx:id="lblPremio" layoutX="46.0" layoutY="30.0" prefHeight="44.0" prefWidth="379.0" text="Premios Torneo B" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="36.0" />
-         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
       </Label>
    </children>
 </AnchorPane>

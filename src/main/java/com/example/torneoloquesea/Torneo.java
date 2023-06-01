@@ -5,7 +5,12 @@ import java.sql.*;
 import java.util.*;
 
 
-
+/**
+ * Clase Torneo. Es el esqueleto del programa y el encargado de importar todos los datos de los ficheros a las tablas y generar los datos de las tablas calculando datos de las tablas importadas(opta).
+ *
+ * @version     1.0 05/05/2023
+ * @author      Ismael Moreno
+ */
 public class Torneo {
 
     static Connection cnxA;
@@ -26,6 +31,13 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo que devuelve el ide del tipo de premio de la tabla tipoPremio
+     *
+     * @param aux String
+     * @param cnx Connection
+     * @return int id_tipo_premio
+     */
     public static int buscarIdTipoPremio(String aux, Connection cnx){
         try {
             ResultSet rs = cnx.createStatement().executeQuery("select * from tipoPremio");
@@ -43,6 +55,12 @@ public class Torneo {
         return 0;
     }
 
+    /**
+     * Metodo encargado de importor los datos a la tabla premio dependiendo de la conexion a la base de datos que se mande por parametro.
+     *
+     * @param cnx Connection
+     * @param csvFile "PremioA/B.csv"
+     */
     public static void generarDatosPremio(Connection cnx, String csvFile){
         try {
             BufferedReader lineReader = new BufferedReader(new FileReader(csvFile));
@@ -68,6 +86,12 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo encargado de importor los datos a la tabla clasificacion dependiendo de la conexion a la base de datos que se mande por parametro.
+     *
+     * @param cnx Connection
+     * @param csvFile "ClasificacionA/B.csv"
+     */
     public static void generarDatosClasificacion(Connection cnx, String csvFile){
         try {
             BufferedReader lineReader = new BufferedReader(new FileReader(csvFile));
@@ -91,6 +115,12 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo encargado de importor los datos a la tabla jugador dependiendo de la conexion a la base de datos que se mande por parametro.
+     *
+     * @param cnx Connection
+     * @param csvFile "JugadorA/B.csv"
+     */
     public static void generarDatosJugador(Connection cnx, String csvFile){
         try {
             BufferedReader lineReader = new BufferedReader(new FileReader(csvFile));
@@ -121,6 +151,11 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo encargado de generar los datos de los tipos de premio a los que opta cada jugador y lo almacena en la tabla "opta".
+     *
+     * @param cnx Connection
+     */
     public static void generarDatosOpta(Connection cnx){
         try {
             Statement st = cnx.createStatement();
@@ -162,6 +197,11 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo encargado de generar los datos de la columna id_premio, asignando asi en la tabla clasificacion, que premio le corresponderia a cada jugador.
+     *
+     * @param cnx Connection
+     */
     public static void generarPremioEnClasificacion(Connection cnx){
         try {
             Statement st = cnx.createStatement();
@@ -229,26 +269,44 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarMain(){
         main(null);
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarGenerarClasificacionA(){
         generarPremioEnClasificacion(cnxA);
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarGenerarClasificacionB(){
         generarPremioEnClasificacion(cnxB);
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarGenerarOptaA(){
         generarDatosOpta(cnxA);
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarGenerarOptaB(){
         generarDatosOpta(cnxB);
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarGenerarJugadoresA(){
         try {
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
@@ -259,6 +317,9 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarGenerarJugadoresB(){
         try {
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
@@ -269,6 +330,9 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarImportarClasificacionA(){
         try {
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
@@ -279,6 +343,9 @@ public class Torneo {
         }
     }
 
+    /**
+     * Metodo que llama a otro metodo dentro de la clase.
+     */
     public static void ejecutarImportarClasificacionB(){
         try {
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
@@ -289,6 +356,12 @@ public class Torneo {
         }
     }
 
+
+    /**
+     * Metodo main que se encarga simplemente de importar los datos de los premios.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");

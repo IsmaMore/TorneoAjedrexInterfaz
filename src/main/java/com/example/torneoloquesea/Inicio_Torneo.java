@@ -7,7 +7,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Clase Inicio_Torneo. Ejectuta el programa y la interfaz, e importa los datos de los premios.
+ *
+ * @version     0.1 05/05/2023
+ * @author      Abel
+ * @version     1.0 01/06/2023
+ * @author      Ismael Moreno
+ */
 public class Inicio_Torneo extends Application {
+    /**
+     * Carga la primera interfaz.
+     *
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Inicio_Torneo.class.getResource("InterfazInicio.fxml"));
@@ -18,6 +32,11 @@ public class Inicio_Torneo extends Application {
         stage.show();
     }
 
+    /**
+     * Llama al metodo main de la clase Torneo, donde se importa los datos de premio. Y lanza la interfaz.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Torneo.ejecutarMain();
         launch();

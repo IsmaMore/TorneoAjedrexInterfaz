@@ -20,6 +20,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Clase TablaController. Clase para usar los metodos en la interfaz de la tabla de jugadores.
+ *
+ * @version     0.1 05/05/2023
+ * @author      Abel
+ * @version     1.0 01/06/2023
+ * @author      Ismael Moreno
+ */
 public class TablaController implements Initializable{
 
     static Connection cnxA;
@@ -81,6 +89,11 @@ public class TablaController implements Initializable{
     private TableColumn<Jugador, Boolean> colParti;
 
 
+    /**
+     * Regresa a la interfaz de inicio.
+     *
+     * @throws IOException
+     */
     @FXML
     protected void volver() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("InterfazInicio.fxml"));
@@ -93,8 +106,9 @@ public class TablaController implements Initializable{
     }
 
 
-
-
+    /**
+     * Muestra los datos de todos los jugadores de cada torneo. Tiene en cuenta que el boton se ha pulsado y que los datos de los jugadores estan importados correctamente y muestra errores al usuario.
+     */
     @FXML
     protected void mostrarTabla(){
         colRank.setCellValueFactory(new PropertyValueFactory<>("Ranking"));
@@ -149,6 +163,11 @@ public class TablaController implements Initializable{
 
     }
 
+    /**
+     * Lanza la interfaz de Modificar.
+     *
+     * @throws IOException
+     */
     @FXML
     protected void modificar() throws IOException{
         FXMLLoader loader= new FXMLLoader(getClass().getResource("InterfazModificar.fxml"));
@@ -160,6 +179,12 @@ public class TablaController implements Initializable{
         stage.show();
     }
 
+    /**
+     * Lanza la interfaz de premiosA o premiosB dependiendo de la seleccion de torneo que haya hecho el usuario. Tiene en cuenta que el boton se ha pulsado y que los datos de los jugadorer y la clasificacion estan importados correctamente y muestra errores al usuario.
+     *
+     * @throws IOException
+     * @throws SQLException
+     */
     @FXML
     protected void verPremios() throws IOException, SQLException{
         if (!(label_premio.getText().equals(""))) {
@@ -188,6 +213,9 @@ public class TablaController implements Initializable{
         }
     }
 
+    /**
+     * Importa los datos de los jugadores y seguido genera los datos de la tabla "opta".
+     */
     @FXML
     protected void resetearTabla(){
         Torneo.ejecutarGenerarJugadoresA();
@@ -197,6 +225,9 @@ public class TablaController implements Initializable{
         showError("¡SE HAN IMPORTADO LOS DATOS JUGADOR!");
     }
 
+    /**
+     * Importa los datos de los clasificacion.
+     */
     @FXML
     protected void importarClasificacion(){
         Torneo.ejecutarImportarClasificacionA();
@@ -204,15 +235,30 @@ public class TablaController implements Initializable{
         showError("¡SE HAN IMPORTADO LOS DATOS CLASIFICACIÓN!");
     }
 
+
+    /**
+     * Hace un label visible para mostrar el error que se mande por parametro.
+     *
+     * @param str String
+     */
     public void showError(String str){
         labelErrorT.setText(str);
         labelErrorT.setVisible(true);
     }
 
+    /**
+     * Hace el label de error invisible.
+     */
     public void hideError(){
         labelErrorT.setVisible(false);
     }
 
+    /**
+     * Metodo que se ejecuta cuando se carga esta interfaz. Usada para que de alguna manera se pueda ejecutar codigo sin tener que presionar nada. Hace el label invisible por defecto.
+     *
+     * @param url url
+     * @param resourceBundle rB
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         label_premio = new Label("");

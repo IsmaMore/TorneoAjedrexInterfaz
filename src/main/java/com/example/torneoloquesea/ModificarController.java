@@ -17,6 +17,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Clase ModificarController. Clase para usar los metodos en la interfaz de Modificar.
+ *
+ * @version     0.1 05/05/2023
+ * @author      Abel
+ * @version     1.0 01/06/2023
+ * @author      Ismael Moreno
+ */
 public class ModificarController implements Initializable {
 
     static Connection cnxA;
@@ -89,6 +97,12 @@ public class ModificarController implements Initializable {
     @FXML
     private Button btmVolverM;
 
+    /**
+     * Funcion que se lanza cuando el usuario pulsa el boton de volver y lo devuelve a la interfaz de Tabla.
+     *
+     * @param btn Button
+     * @throws IOException
+     */
     private void volver(Button btn) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("InterfazTabla.fxml"));
         Parent root= loader.load();
@@ -99,20 +113,39 @@ public class ModificarController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Llama a la funcion volver.
+     *
+     * @throws IOException
+     */
     @FXML
     protected void volverA() throws IOException {
         volver(btmVolverA);
     }
 
+    /**
+     * Llama a la funcion volver.
+     *
+     * @throws IOException
+     */
     @FXML
     protected void volverB() throws IOException {
         volver(btmVolverB);
     }
+
+    /**
+     * Llama a la funcion volver.
+     *
+     * @throws IOException
+     */
     @FXML
     protected void volverM() throws IOException {
         volver(btmVolverM);
     }
 
+    /**
+     * Metodo encargado de comprobar si se pueden aplicar los cambios o no. Se contemplan muchas variables, como que no trates de cambiar el Ranking, el cual es clave principal, o que no te permita aplicar los cambios si realmente no has hecho ningun cambio, etc...
+     */
     @FXML
     protected void aplicarCambios() {
         if (Ranking > 0){
@@ -168,6 +201,9 @@ public class ModificarController implements Initializable {
         }
     }
 
+    /**
+     * Cambia los valores de las variables una vez se aplican los cambios para que el programa pueda seguir correctamente.
+     */
     private void updateData() {
         Nombre = tfNombre.getText();
         Origen = tfOrigen.getText();
@@ -175,6 +211,9 @@ public class ModificarController implements Initializable {
         Participa = cbParticipa.getValue();
     }
 
+    /**
+     * Metodo encargadod de buscar el jugador que el usuario introduce, ya sea con el Ranking(ID) o por el nombre, y los muestra por pantalla una vez se ha encontrado el jugador. Tiene en cuenta que los formatos sean correctos, que el usuario recibe feedback a traves de los posibles errores, etc...
+     */
     @FXML
     protected void buscarJugador(){
         ResultSet rs = null;
@@ -255,11 +294,19 @@ public class ModificarController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que muestra el error(String) que recibe por parametro en la interfaz.
+     *
+     * @param s String
+     */
     private void mostrarError(String s) {
         labelError.setText(s);
         labelError.setVisible(true);
     }
 
+    /**
+     * Vacia los datos locales y de la interfaz.
+     */
     private void vaciarDatos() {
         Ranking = 0;
         Nombre = "";
@@ -272,6 +319,12 @@ public class ModificarController implements Initializable {
         lvOpta.getItems().removeAll();
     }
 
+    /**
+     * Metodo que llama a una funcion de la clase Premio para luego mostrar los Tipos de premio a los que opta un jugador en concreto.
+     *
+     * @param cnx Connection
+     * @param Ranking Int
+     */
     private void fillListView(Connection cnx, int Ranking){
         lvOpta.getItems().remove(0, lvOpta.getItems().size());
         ArrayList<String> tipoOpta = Premio.obtenerTipoPremioOpta(cnx, Ranking);
@@ -280,6 +333,13 @@ public class ModificarController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que llama a una funcion de la clase Jugador y devuelve un unico jugador dependiendo de su Ranking(ID).
+     *
+     * @param cnx Connection
+     * @return ResultSet
+     * @throws SQLException
+     */
     private ResultSet obtenerJugadorUnico(Connection cnx) throws SQLException {
         if (tfId.getText().matches("\\d+")){
             return Jugador.buscarJugadorUnico(Integer.parseInt(tfId.getText()), cnx);
@@ -287,10 +347,20 @@ public class ModificarController implements Initializable {
         return null;
     }
 
+    /**
+     * Metodo que llama a una funcion de la clase Jugador y devuelve un unico jugador dependiendo de su Nombre.
+     *
+     * @param cnx Connection
+     * @return ResultSet
+     * @throws SQLException
+     */
     private ResultSet obtenerJugadorPorNombre(Connection cnx) throws SQLException {
         return Jugador.buscarJugadorPorNombre(tfNombre.getText(), cnx);
     }
 
+    /**
+     *  Metodo que muestra los textField de Ranking y Nombre una vez has seleccionado el Torneo en el cual quieres buscar al jugador que deseas modificar.
+     */
     private void mostrarID(){
         setEmptyValues();
         setVisibility(false);
@@ -300,6 +370,9 @@ public class ModificarController implements Initializable {
         tfNombre.setVisible(true);
     }
 
+    /**
+     * Metodo que llama al metodo mostrarID y modifica el css de los botones para que el usuario vea que Torneo ha seleccionado.
+     */
     @FXML
     protected void mostrarIDA(){
         mostrarID();
@@ -312,6 +385,9 @@ public class ModificarController implements Initializable {
         }
     }
 
+    /**
+     * Metodo que llama al metodo mostrarID y modifica el css de los botones para que el usuario vea que Torneo ha seleccionado.
+     */
     @FXML
     protected void mostrarIDB(){
         mostrarID();
@@ -324,6 +400,9 @@ public class ModificarController implements Initializable {
         }
     }
 
+    /**
+     * Vacia los campos de la interfaz.
+     */
     private void setEmptyValues(){
         tfId.setText("");
         tfNombre.setText("");
@@ -333,6 +412,11 @@ public class ModificarController implements Initializable {
         lvOpta.getItems().removeAll();
     }
 
+    /**
+     * Hace visibles o invisibles los demas elemento de la interfaz. Todos menos Ranking(ID) y Nombre.
+     *
+     * @param bol boolean
+     */
     private void setVisibility(boolean bol) {
         labelOrigen.setVisible(bol);
         tfOrigen.setVisible(bol);
@@ -344,6 +428,12 @@ public class ModificarController implements Initializable {
         lvOpta.setVisible(bol);
     }
 
+    /**
+     * Metodo que se ejecuta cuando se carga esta interfaz. Usada para que de alguna manera se pueda ejecutar codigo sin tener que presionar nada.
+     *
+     * @param url url
+     * @param resourceBundle rB
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         torneo = "";

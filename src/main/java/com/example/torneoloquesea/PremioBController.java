@@ -17,7 +17,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
+/**
+ * Clase PremioAController. Clase para usar los metodos en la interfaz de Premio A.
+ *
+ * @version     1.0 01/06/2023
+ * @author      Ismael Moreno
+ */
 public class PremioBController extends  ModificarController implements Initializable{
 
 
@@ -51,6 +56,9 @@ public class PremioBController extends  ModificarController implements Initializ
     @FXML
     private Label labelExB;
 
+    /**
+     * Metodo encargado de exportar en formato de texto los premios finales del torneo.
+     */
     @FXML
     protected void exportarB(){
         try {
@@ -108,11 +116,22 @@ public class PremioBController extends  ModificarController implements Initializ
         labelExB.setVisible(true);
     }
 
+    /**
+     * Metodo para volver a la interfaz de tabla.
+     *
+     * @throws IOException
+     */
     @Override
     protected void volverB() throws IOException {
         super.volverB();
     }
 
+    /**
+     * Metodo que se ejecuta cuando se carga esta interfaz. Usada para que de alguna manera se pueda ejecutar codigo sin tener que presionar nada. Muestra los premios en la tabla.
+     *
+     * @param url url
+     * @param resourceBundle rB
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Torneo.ejecutarGenerarClasificacionB();

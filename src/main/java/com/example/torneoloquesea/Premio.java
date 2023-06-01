@@ -5,12 +5,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Clase Premio. Se utiiza para crear objetos de los datos devueltos de la tabla "premio" en la base de datos.
+ *
+ * @version     1.0 27/05/2023
+ * @author      Ismael Moreno
+ */
 public class Premio {
     private int Posicion;
     private String Nombre;
     private String Tipo_Premio;
     private String Cantidad;
 
+    /**
+     * Constructor de Premio.
+     *
+     * @param posicion int
+     * @param nombre String
+     * @param tipo_Premio String
+     * @param cantidad String
+     */
     public Premio(int posicion, String nombre, String tipo_Premio, String cantidad) {
         Posicion = posicion;
         Nombre = nombre;
@@ -34,6 +48,12 @@ public class Premio {
         return Cantidad;
     }
 
+    /**
+     * Hace una seleccion de todos los premios(quien lo gana, cantidad, tipo y posicion) haciendo uso de una sentencia que une tres tablas diferentes.
+     *
+     * @param cnx Connection
+     * @return ArrayList<Premio>
+     */
     public static ArrayList<Premio> obtenerPremios(Connection cnx){
         ArrayList<Premio> premios = new ArrayList<>();
         try {
@@ -49,6 +69,13 @@ public class Premio {
         return premios;
     }
 
+    /**
+     * Metodo que devuelve una lista de todos los tipos de premio a los que opta un jugador especifico.
+     *
+     * @param cnx Connection
+     * @param Ranking int
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> obtenerTipoPremioOpta(Connection cnx, int Ranking){
         ArrayList<String> tipoOpta = new ArrayList<>();
         try {

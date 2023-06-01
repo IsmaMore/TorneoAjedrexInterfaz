@@ -10,59 +10,59 @@
  8        | Mannion, Stephen R                       | General                   |  400€    
  9        | Escartin Lacasa, Jose                    | General                   |  300€    
  10       | Christiansen, Johan-Sebastian            | General                   |  200€    
- 11       | Van Delft, Merijn                        | SUB 2400                  |  225€    
  12       | Harshad S                                | General                   |  200€    
- 13       | Assylov, Miras                           | SUB 2200                  |  225€    
- 14       | Chernikov, Vladimir                      | Comunidad Valenciana      |  500€    
  15       | Rajarishi Karthi                         | General                   |  200€    
  16       | Ojas Kulkarni                            | General                   |  150€    
  17       | Vignesh B                                | General                   |  150€    
- 18       | Gavarrete, Nahun                         | Comunidad Valenciana      |  400€    
- 19       | Rakshitta Ravi                           | General                   |  150€    
- 20       | Ram Aravind L N                          | SUB 2400                  |  150€    
+ 18       | Gavarrete, Nahun                         | General                   |  150€    
+ 48       | Kocak, Ediz                              | General                   |  100€    
+ 51       | Cruz Lledo, Pablo                        | General                   |  100€    
+ 55       | Perez Candelario, Matias                 | General                   |  100€    
+ 56       | Draghici Flutur, Gavril                  | General                   |  100€    
+ 57       | Minana Menor, Antonio                    | General                   |  100€    
+ 60       | Nandhidhaa, P V                          | General                   |  80€     
+ 61       | Cherniack, Alex                          | General                   |  80€     
+ 62       | Parramon Ros, Francesc                   | General                   |  80€     
+ 63       | Perez Ruiz, Santiago                     | General                   |  80€     
+ 64       | Nawin J J                                | General                   |  80€     
+ 14       | Chernikov, Vladimir                      | Comunidad Valenciana      |  500€    
+ 25       | Ilinca Ilinca, Felix Antonio             | Comunidad Valenciana      |  400€    
+ 26       | Grabuzova, Tatiana                       | Comunidad Valenciana      |  300€    
+ 31       | Ibanez Aullana, Ramon                    | Comunidad Valenciana      |  250€    
+ 49       | Gil Lopez, Alejandro                     | Comunidad Valenciana      |  200€    
+ 54       | O`Neill Y Daneiko, Jose Antonio          | Comunidad Valenciana      |  150€    
+ 11       | Van Delft, Merijn                        | SUB 2400                  |  225€    
+ 19       | Rakshitta Ravi                           | SUB 2400                  |  150€    
+ 39       | Panjer, Sidney                           | SUB 2400                  |  120€    
+ 58       | Troffiguer, Olivier                      | SUB 2400                  |  100€    
+ 65       | Nurmanova, Alua                          | SUB 2400                  |  80€     
+ 13       | Assylov, Miras                           | SUB 2200                  |  225€    
  21       | Fernandez Garcia, Gumersindo             | SUB 2200                  |  150€    
- 22       | Kuipers, Eelco                           | SUB 2400                  |  120€    
+ 44       | Garcia Callejo, Jesus                    | SUB 2200                  |  120€    
+ 59       | Unciti Juan, Javier                      | SUB 2200                  |  100€    
+ 66       | Hushpit, Yaroslav                        | SUB 2200                  |  80€     
+ 20       | Ram Aravind L N                          | Alojado                   |  150€    
+ 22       | Kuipers, Eelco                           | Alojado                   |  150€    
  23       | Slagboom, Leandro                        | Alojado                   |  150€    
  24       | Nurgaliyev, Sauat                        | Alojado                   |  150€    
- 25       | Ilinca Ilinca, Felix Antonio             | Comunidad Valenciana      |  300€    
- 26       | Grabuzova, Tatiana                       | Comunidad Valenciana      |  250€    
  27       | Sarveshwaran V                           | Alojado                   |  150€    
  28       | Priyanka, K                              | Alojado                   |  150€    
  29       | Gugan G                                  | Alojado                   |  150€    
  30       | Levi, Netanel                            | Alojado                   |  150€    
- 31       | Ibanez Aullana, Ramon                    | Comunidad Valenciana      |  200€    
  32       | Arjun C Krishnamachari                   | Alojado                   |  150€    
  33       | Rodriguez Melendez, Juan Humbert         | Alojado                   |  150€    
- 34       | Plaskett, H James                        | Comunidad Valenciana      |  150€    
+ 34       | Plaskett, H James                        | Alojado                   |  150€    
  35       | Sanroman Costas, Mauro                   | Alojado                   |  150€    
  36       | Cabezas Ayala, Ivan                      | Alojado                   |  150€    
  37       | Goossens, Hanne                          | Alojado                   |  150€    
- 38       | Lohia, Sohum                             | SUB 2200                  |  120€    
- 39       | Panjer, Sidney                           | General                   |  100€    
+ 38       | Lohia, Sohum                             | Alojado                   |  150€    
  40       | Docx, Stefan                             | Alojado                   |  150€    
  41       | Roe, Simon J                             | Alojado                   |  150€    
  42       | Clemente Llamero, Roberto                | Alojado                   |  150€    
  43       | Rodriguez Garcia, Manuel Francis         | Alojado                   |  150€    
- 44       | Garcia Callejo, Jesus                    | General                   |  100€    
  45       | Horcajada Reales, Guillermo              | Alojado                   |  150€    
  46       | Hiren K G                                | Alojado                   |  150€    
  47       | Achuthan, Dylan                          | Alojado                   |  150€    
- 48       | Kocak, Ediz                              | General                   |  100€    
- 49       | Gil Lopez, Alejandro                     | Alojado                   |  150€    
  50       | Palomo Teruel, Xavier                    | Alojado                   |  150€    
- 51       | Cruz Lledo, Pablo                        | General                   |  100€    
  52       | Minnican, Alan                           | Alojado                   |  150€    
  53       | Sanchez Manzanares, Jorge Luis           | Alojado                   |  150€    
- 54       | O`Neill Y Daneiko, Jose Antonio          | Alojado                   |  150€    
- 55       | Perez Candelario, Matias                 | Alojado                   |  150€    
- 56       | Draghici Flutur, Gavril                  | Alojado                   |  150€    
- 57       | Minana Menor, Antonio                    | General                   |  100€    
- 58       | Troffiguer, Olivier                      |                           |  0€      
- 59       | Unciti Juan, Javier                      | SUB 2400                  |  100€    
- 60       | Nandhidhaa, P V                          |                           |  0€      
- 61       | Cherniack, Alex                          |                           |  0€      
- 62       | Parramon Ros, Francesc                   | SUB 2200                  |  100€    
- 63       | Perez Ruiz, Santiago                     | General                   |  80€     
- 64       | Nawin J J                                | General                   |  80€     
- 65       | Nurmanova, Alua                          |                           |  0€      
- 66       | Hushpit, Yaroslav                        |                           |  0€      

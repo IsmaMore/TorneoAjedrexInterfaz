@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox id="fondo2" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.TablaController">
+<VBox id="fondo2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" stylesheets="@estilo1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.torneoloquesea.TablaController">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="83.0">
          <children>
             <Label fx:id="nomTabla" prefHeight="44.0" prefWidth="364.0" text="Torneo Benidorm" textFill="WHITE">
                <font>
@@ -36,9 +36,9 @@
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="691.0" prefWidth="980.0">
+      <HBox prefHeight="525.0" prefWidth="980.0">
          <children>
-            <TableView fx:id="tablas" maxHeight="540.0" opacity="0.9" prefWidth="780.0">
+            <TableView fx:id="tablas" maxHeight="540.0" opacity="0.9" prefHeight="500.0" prefWidth="780.0">
               <columns>
                 <TableColumn fx:id="colRank" prefWidth="67.0" text="Ranking" />
                 <TableColumn fx:id="colNombre" prefWidth="227.0" text="Nombre" />
@@ -52,11 +52,11 @@
                   <Insets />
                </HBox.margin>
             </TableView>
-            <VBox alignment="CENTER" prefHeight="563.0" prefWidth="204.0" spacing="30.0">
+            <VBox alignment="CENTER" prefHeight="512.0" prefWidth="201.0" spacing="30.0">
                <children>
-                  <Button fx:id="btmModifica" mnemonicParsing="false" onAction="#modificar" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Modificar">
+                  <Button fx:id="btmModifica" mnemonicParsing="false" onAction="#modificar" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Modificar/Opta">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -71,9 +71,16 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="btmReset" mnemonicParsing="false" onAction="#resetearTabla" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Regenerar Datos">
+                  <Button fx:id="btmReset" mnemonicParsing="false" onAction="#resetearTabla" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Importar Jugadores">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="btmResetClasificacion" mnemonicParsing="false" onAction="#importarClasificacion" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Importar Clasificacion">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -86,15 +93,23 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <VBox.margin>
-                        <Insets top="180.0" />
+                        <Insets top="80.0" />
                      </VBox.margin>
                   </Button>
                </children>
                <HBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets />
                </HBox.margin>
             </VBox>
          </children></HBox>
+      <Label fx:id="labelErrorT" prefHeight="32.0" prefWidth="780.0" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 10;" text="Label">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" top="20.0" />

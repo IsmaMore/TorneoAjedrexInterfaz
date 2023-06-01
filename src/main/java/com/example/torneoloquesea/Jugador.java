@@ -57,16 +57,17 @@ public class Jugador {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         try {
             ResultSet rsJ = cnx.createStatement().executeQuery("select * from jugador");
-            rsJ.first();
-            String participa;
-            do {
-                if (rsJ.getBoolean(7)){
-                    participa = "Si";
-                }else{
-                    participa = "No";
-                }
-                jugadores.add(new Jugador(rsJ.getInt(1), rsJ.getString(2), rsJ.getInt(3), rsJ.getInt(4), rsJ.getString(5), rsJ.getString(6), participa));
-            }while (rsJ.next());
+            if (rsJ.first()){
+                String participa;
+                do {
+                    if (rsJ.getBoolean(7)) {
+                        participa = "Si";
+                    } else {
+                        participa = "No";
+                    }
+                    jugadores.add(new Jugador(rsJ.getInt(1), rsJ.getString(2), rsJ.getInt(3), rsJ.getInt(4), rsJ.getString(5), rsJ.getString(6), participa));
+                } while (rsJ.next());
+            }
             rsJ.close();
         }catch (SQLException e){
             e.printStackTrace();

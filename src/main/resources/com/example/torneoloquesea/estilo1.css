@@ -7,7 +7,7 @@
     -fx-background-size: 120%;
 }
 
-#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmVolverM, #btmTransA, #btmVolverA, #btmVolverB, #btmTransB, #btmVolverT, #btmBuscar, #btnExportarA, #btnExportarB {
+#btmsalida, #btmIniciar, #btmAplicar, #btmCancelar, #btmDesca, #btmModifica, #btmPremio, #btmReset, #btmResetClasificacion, #btmVolverM, #btmTransA, #btmVolverA, #btmVolverB, #btmTransB, #btmVolverT, #btmBuscar, #btnExportarA, #btnExportarB {
     -fx-background-color: white;
     -fx-border-color: white;
     -fx-border-radius: 5px;
@@ -30,11 +30,11 @@
     -fx-background-color: #aaaaaa;
 }
 
-#btmsalida:hover, #btmIniciar:hover, #btmAplicar:hover, #btmCancelar:hover, #btmDesca:hover, #btmModifica:hover, #btmPremio:hover, #btmReset:hover, #btmTablaA:hover, #btmTablaB:hover, #btmVolverT:hover, #btmVolverM:hover, #btmVolverA:hover, #btmVolverB:hover, #btmTransA:hover, #btmTransB:hover, #btnTA:hover, #btnTB:hover, #btmBuscar:hover, #btnExportarA:hover, #btnExportarB:hover {
+#btmsalida:hover, #btmIniciar:hover, #btmAplicar:hover, #btmCancelar:hover, #btmDesca:hover, #btmModifica:hover, #btmPremio:hover, #btmReset:hover, #btmTablaA:hover, #btmTablaB:hover, #btmVolverT:hover, #btmVolverM:hover, #btmVolverA:hover, #btmVolverB:hover, #btmTransA:hover, #btmTransB:hover, #btnTA:hover, #btnTB:hover, #btmBuscar:hover, #btnExportarA:hover, #btnExportarB:hover, #btmResetClasificacion:hover {
     -fx-background-color: #8a8a8a;
 }
 
-#btmsalida:pressed, #btmIniciar:pressed, #btmAplicar:pressed, #btmCancelar:pressed, #btmDesca:pressed, #btmModifica:pressed, #btmPremio:pressed, #btmReset:pressed, #btmTablaA:pressed, #btmTablaB:pressed, #btmVolverT:pressed, #btmVolverM:pressed, #btmVolverA:pressed, #btmVolverB:pressed, #btmTransA:pressed, #btmTransB:pressed, #btnTA:pressed, #btnTB:pressed, #btmBuscar:pressed, #btnExportarA:pressed, #btnExportarB:pressed {
+#btmsalida:pressed, #btmIniciar:pressed, #btmAplicar:pressed, #btmCancelar:pressed, #btmDesca:pressed, #btmModifica:pressed, #btmPremio:pressed, #btmReset:pressed, #btmTablaA:pressed, #btmTablaB:pressed, #btmVolverT:pressed, #btmVolverM:pressed, #btmVolverA:pressed, #btmVolverB:pressed, #btmTransA:pressed, #btmTransB:pressed, #btnTA:pressed, #btnTB:pressed, #btmBuscar:pressed, #btnExportarA:pressed, #btnExportarB:pressed, #btmResetClasificacion:pressed {
     -fx-background-color: #aaaaaa;
 }
 

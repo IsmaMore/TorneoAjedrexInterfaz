@@ -293,14 +293,14 @@ public class Torneo {
         try {
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
-            generarDatosJugador(cnxA, CSV_JUG_A);
-            generarDatosJugador(cnxB, CSV_JUG_B);
-            generarDatosClasificacion(cnxA, CSV_CLA_A);
-            generarDatosClasificacion(cnxB, CSV_CLA_B);
+            //generarDatosJugador(cnxA, CSV_JUG_A);
+            //generarDatosJugador(cnxB, CSV_JUG_B);
+            //generarDatosClasificacion(cnxA, CSV_CLA_A);
+            //generarDatosClasificacion(cnxB, CSV_CLA_B);
             generarDatosPremio(cnxA, CSV_PRE_A);
             generarDatosPremio(cnxB, CSV_PRE_B);
-            generarDatosOpta(cnxA);
-            generarDatosOpta(cnxB);
+            //generarDatosOpta(cnxA);
+            //generarDatosOpta(cnxB);
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
             cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
         } catch (SQLException e){

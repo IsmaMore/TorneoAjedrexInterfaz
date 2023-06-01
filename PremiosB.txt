@@ -8,34 +8,54 @@
  6        | Pajuelo Morales, Raul                    | General                   |  700€    
  7        | Martinez Dourado, Daniel                 | General                   |  600€    
  8        | Prieto, Alberto                          | General                   |  500€    
- 9        | Palao, Adriana                           | Comunidad Valenciana      |  500€    
  10       | Aadith R                                 | General                   |  400€    
  11       | Lopez de Turiso, Jose Angel              | General                   |  300€    
  12       | Sanabria Taskila, Jenny Maria            | General                   |  250€    
- 13       | Lopez Palomar, Jose                      | Comunidad Valenciana      |  400€    
  14       | Saber, Anas                              | General                   |  200€    
- 15       | Selva Salvador, Antonio                  | Comunidad Valenciana      |  300€    
  16       | Ionita, Emilian-Paul                     | General                   |  150€    
  17       | Nwachukwu, Chino                         | General                   |  150€    
  18       | Rodriguez Gomez, Vicente                 | General                   |  150€    
- 19       | Nieto Foresti, Julian                    | SUB 1800                  |  225€    
- 20       | Saez Gabikagogeaskoa, Oscar              | Alojado                   |  150€    
- 21       | Garcia Bueno, Juan Pablo                 | SUB 1800                  |  150€    
+ 35       | Millward, Kevin P                        | General                   |  100€    
+ 44       | Nechifor, David                          | General                   |  100€    
+ 51       | Engelaer, Maurice                        | General                   |  100€    
+ 56       | Ruiz Ureta, Ernesto                      | General                   |  100€    
+ 57       | Mallevaey, Armand                        | General                   |  100€    
+ 59       | Bergara Ede, Josu                        | General                   |  80€     
+ 63       | Dawson, Alastair                         | General                   |  80€     
+ 64       | Lopez Heras, Arturo                      | General                   |  80€     
+ 65       | Vicente Soriano, Josep                   | General                   |  80€     
+ 66       | Espejo Montagut, Jose Maria              | General                   |  80€     
+ 9        | Palao, Adriana                           | Comunidad Valenciana      |  500€    
+ 13       | Lopez Palomar, Jose                      | Comunidad Valenciana      |  400€    
+ 15       | Selva Salvador, Antonio                  | Comunidad Valenciana      |  300€    
  22       | Izquierdo Carbellido, Pablo              | Comunidad Valenciana      |  250€    
  23       | Roca Cruz, Rafael                        | Comunidad Valenciana      |  200€    
+ 32       | Pedraza Fernandez, Miguel Angel          | Comunidad Valenciana      |  150€    
+ 73       | Such Palacios, Jose Miguel               | Comunidad Valenciana      |  100€    
+ 74       | Hassomal Daswani, Birjkumar              | Comunidad Valenciana      |  80€     
+ 19       | Nieto Foresti, Julian                    | SUB 1800                  |  225€    
+ 21       | Garcia Bueno, Juan Pablo                 | SUB 1800                  |  150€    
+ 36       | Hushpit, Lukian                          | SUB 1800                  |  120€    
+ 58       | Ballina Amandi, Casimiro                 | SUB 1800                  |  100€    
+ 69       | Arribas Lopez, Sara                      | SUB 1800                  |  80€     
+ 28       | Conde Negro, Francisco Javier            | SUB 1600                  |  225€    
+ 30       | Suriya S V                               | SUB 1600                  |  150€    
+ 60       | Valenzuela Garcia, Alberto               | SUB 1600                  |  120€    
+ 62       | Prieto Matias, Manuel                    | SUB 1600                  |  100€    
+ 70       | Pesochinskiy, Stepan                     | SUB 1600                  |  80€     
+ 29       | Sanchez-Laulhe Garcia-Mercadal,          | SUB 1400                  |  225€    
+ 61       | Ojassvini Thiagarajan                    | SUB 1400                  |  150€    
+ 68       | Morata Perez, Jose                       | SUB 1400                  |  120€    
+ 71       | Voronaya, Eva                            | SUB 1400                  |  100€    
+ 72       | Prieto Rol, Esther                       | SUB 1400                  |  80€     
+ 20       | Saez Gabikagogeaskoa, Oscar              | Alojado                   |  150€    
  24       | Place, Nicholas                          | Alojado                   |  150€    
  25       | Fuster Aguilo, Joan                      | Alojado                   |  150€    
  26       | Mateev, Kaloyan Mateev                   | Alojado                   |  150€    
- 27       | Camison Zornoza, Cesar                   | Comunidad Valenciana      |  150€    
- 28       | Conde Negro, Francisco Javier            | SUB 1600                  |  225€    
- 29       | Sanchez-Laulhe Garcia-Mercadal,          | SUB 1400                  |  225€    
- 30       | Suriya S V                               | SUB 1600                  |  150€    
+ 27       | Camison Zornoza, Cesar                   | Alojado                   |  150€    
  31       | Diez Viera, Oscar                        | Alojado                   |  150€    
- 32       | Pedraza Fernandez, Miguel Angel          | SUB 1800                  |  120€    
  33       | Skielnik, Joseph J                       | Alojado                   |  150€    
  34       | Urena Casacuberta, Lluis                 | Alojado                   |  150€    
- 35       | Millward, Kevin P                        | Alojado                   |  150€    
- 36       | Hushpit, Lukian                          | General                   |  100€    
  37       | Gukasov, Artem                           | Alojado                   |  150€    
  38       | Swapna C N                               | Alojado                   |  150€    
  39       | Muratova, Anel                           | Alojado                   |  150€    
@@ -43,73 +63,13 @@
  41       | Medina Sanchez, Gines                    | Alojado                   |  150€    
  42       | Sudharsan Gurukrishnan                   | Alojado                   |  150€    
  43       | Gomez Fernandez, Fulgencio               | Alojado                   |  150€    
- 44       | Nechifor, David                          | General                   |  100€    
  45       | Minguela Munoz, Bienvenido               | Alojado                   |  150€    
  46       | Martin Martin, Luis Vicente              | Alojado                   |  150€    
  47       | Ingham, H William                        | Alojado                   |  150€    
  48       | Spanton, Tim R                           | Alojado                   |  150€    
  49       | Rios Garcia, Miguel                      | Alojado                   |  150€    
  50       | Williams, Duncan                         | Alojado                   |  150€    
- 51       | Engelaer, Maurice                        | General                   |  100€    
  52       | Cluyts, Marc                             | Alojado                   |  150€    
  53       | Aird, Ian                                | Alojado                   |  150€    
  54       | Kane, Robert                             | Alojado                   |  150€    
  55       | De Luna Butz, Alberto                    | Alojado                   |  150€    
- 56       | Ruiz Ureta, Ernesto                      | General                   |  100€    
- 57       | Mallevaey, Armand                        | General                   |  100€    
- 58       | Ballina Amandi, Casimiro                 | SUB 1800                  |  100€    
- 59       | Bergara Ede, Josu                        | General                   |  80€     
- 60       | Valenzuela Garcia, Alberto               | SUB 1600                  |  120€    
- 61       | Ojassvini Thiagarajan                    | SUB 1400                  |  150€    
- 62       | Prieto Matias, Manuel                    | SUB 1600                  |  100€    
- 63       | Dawson, Alastair                         | General                   |  80€     
- 64       | Lopez Heras, Arturo                      | General                   |  80€     
- 65       | Vicente Soriano, Josep                   | General                   |  80€     
- 66       | Espejo Montagut, Jose Maria              | General                   |  80€     
- 67       | Izagirre Alsua, Aritz                    |                           |  0€      
- 68       | Morata Perez, Jose                       | SUB 1400                  |  120€    
- 69       | Arribas Lopez, Sara                      | SUB 1800                  |  80€     
- 70       | Pesochinskiy, Stepan                     | SUB 1600                  |  80€     
- 71       | Voronaya, Eva                            | SUB 1400                  |  100€    
- 72       | Prieto Rol, Esther                       | SUB 1400                  |  80€     
- 73       | Such Palacios, Jose Miguel               | Comunidad Valenciana      |  100€    
- 74       | Hassomal Daswani, Birjkumar              | Comunidad Valenciana      |  80€     
- 75       | Henning Lubberding, Hans                 |                           |  0€      
- 76       | Martinez Torres, Jose Manuel             |                           |  0€      
- 77       | Deiana, Giacomo                          |                           |  0€      
- 78       | Izquierdo Arruferia, Joseba              |                           |  0€      
- 79       | Rumsey, Victor B                         |                           |  0€      
- 80       | Gerona Maura, Jesus                      |                           |  0€      
- 81       | Hellmann, Thomas                         |                           |  0€      
- 82       | Grindbakken, Erik                        |                           |  0€      
- 83       | Mateeva, Yana                            |                           |  0€      
- 84       | Munoz Gonzalez, Martin                   |                           |  0€      
- 85       | Embuena Molina, Miguel Angel             |                           |  0€      
- 86       | Vegara Gallego, Pere                     |                           |  0€      
- 87       | Casadevall Mainau, Iraida                |                           |  0€      
- 88       | Mabras Lloret, Monserrat                 |                           |  0€      
- 89       | Albuixech Sanz, Jorge                    |                           |  0€      
- 90       | Stokes, Paul C                           |                           |  0€      
- 91       | Quintana Ruiz, David                     |                           |  0€      
- 92       | Albuixech Soler, Sergi                   |                           |  0€      
- 93       | Rico Garcia, Carlos                      |                           |  0€      
- 94       | Mena Lena, Antonio                       |                           |  0€      
- 95       | Genis Traveria, Ferran                   |                           |  0€      
- 96       | Gomez Real, Maria Del Pilar              |                           |  0€      
- 97       | Vander Voort, Patrick                    |                           |  0€      
- 98       | Garcia Lorenzo, Jaime                    |                           |  0€      
- 99       | Contreras Valle, Juan Carlos             |                           |  0€      
- 100      | Verhoeven, Rudiger                       |                           |  0€      
- 101      | Kearsley, Raymond J                      |                           |  0€      
- 102      | Riera Mestres, Josep                     |                           |  0€      
- 103      | Perez Solanas, Hugo                      |                           |  0€      
- 104      | Garcia Diaz, Jose                        |                           |  0€      
- 105      | Falcon Ibanez, Alicia                    |                           |  0€      
- 106      | Dumanskyi, Matvii                        |                           |  0€      
- 107      | Galletero Monsalve, Juan Francis         |                           |  0€      
- 108      | Ortega Moya, Juan Francisco              |                           |  0€      
- 109      | Ulla Centelles, Llorens                  |                           |  0€      
- 110      | Jimenez Mahillo, David                   |                           |  0€      
- 111      | Ledesma Ledesma, Jose Ignacio            |                           |  0€      
- 112      | Rodriguez Dogmoch, Kyran                 |                           |  0€      
- 113      | Milner, Romi                             |                           |  0€      

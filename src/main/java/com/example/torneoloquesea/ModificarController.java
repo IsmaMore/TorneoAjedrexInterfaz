@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ModificarController implements Initializable {
@@ -33,6 +34,9 @@ public class ModificarController implements Initializable {
     String torneo, Nombre, Origen, Alojado, Participa;
 
     int Ranking;
+
+    @FXML
+    private ListView<String> lvOpta;
 
     @FXML
     private Button btnTA;
@@ -76,6 +80,9 @@ public class ModificarController implements Initializable {
     private Label labelError;
 
     @FXML
+    private Label labelOpta;
+
+    @FXML
     private Button btmVolverA;
     @FXML
     private Button btmVolverB;
@@ -117,11 +124,14 @@ public class ModificarController implements Initializable {
                                 boolean cambio;
                                 if (torneo.equals("A")) {
                                     cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);
+                                    fillListView(cnxA, Ranking);
                                 } else {
                                     cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxB);
+                                    fillListView(cnxB, Ranking);
                                 }
                                 if (cambio) {
                                     mostrarError("¡SE HAN APLICADO LOS CAMBIOS!");
+                                    updateData();
                                 } else {
                                     mostrarError("¡NO SE HAN APLICADO LOS CAMBIOS!");
                                 }
@@ -132,11 +142,14 @@ public class ModificarController implements Initializable {
                             boolean cambio;
                             if (torneo.equals("A")) {
                                 cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);
+                                fillListView(cnxA, Ranking);
                             } else {
                                 cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxB);
+                                fillListView(cnxA, Ranking);
                             }
                             if (cambio) {
                                 mostrarError("¡SE HAN APLICADO LOS CAMBIOS!");
+                                updateData();
                             } else {
                                 mostrarError("¡NO SE HAN APLICADO LOS CAMBIOS!");
                             }
@@ -153,6 +166,13 @@ public class ModificarController implements Initializable {
         }else {
             mostrarError("¡NO SE PUDO APLICAR CAMBIOS!");
         }
+    }
+
+    private void updateData() {
+        Nombre = tfNombre.getText();
+        Origen = tfOrigen.getText();
+        Alojado = cbAlojado.getValue();
+        Participa = cbParticipa.getValue();
     }
 
     @FXML
@@ -201,6 +221,11 @@ public class ModificarController implements Initializable {
                                 Participa = "No";
                             }
                             cbParticipa.setValue(Participa);
+                            if (torneo.equals("A")){
+                                fillListView(cnxA, Ranking);
+                            }else {
+                                fillListView(cnxB, Ranking);
+                            }
                             setVisibility(true);
                             labelError.setVisible(false);
                         }else {
@@ -211,6 +236,7 @@ public class ModificarController implements Initializable {
                     } else {
                         vaciarDatos();
                         mostrarError("¡JUGADOR NO ENCONTRADO!");
+                        tfNombre.setText("");
                         setVisibility(false);
                     }
 
@@ -243,8 +269,16 @@ public class ModificarController implements Initializable {
         tfOrigen.setText("");
         cbAlojado.setValue("");
         cbParticipa.setValue("");
+        lvOpta.getItems().removeAll();
     }
 
+    private void fillListView(Connection cnx, int Ranking){
+        lvOpta.getItems().remove(0, lvOpta.getItems().size());
+        ArrayList<String> tipoOpta = Premio.obtenerTipoPremioOpta(cnx, Ranking);
+        if (tipoOpta != null){
+            lvOpta.getItems().addAll(tipoOpta);
+        }
+    }
 
     private ResultSet obtenerJugadorUnico(Connection cnx) throws SQLException {
         if (tfId.getText().matches("\\d+")){
@@ -296,6 +330,7 @@ public class ModificarController implements Initializable {
         tfOrigen.setText("");
         cbParticipa.setValue("");
         cbAlojado.setValue("");
+        lvOpta.getItems().removeAll();
     }
 
     private void setVisibility(boolean bol) {
@@ -305,6 +340,8 @@ public class ModificarController implements Initializable {
         cbAlojado.setVisible(bol);
         labelParticipa.setVisible(bol);
         cbParticipa.setVisible(bol);
+        labelOpta.setVisible(bol);
+        lvOpta.setVisible(bol);
     }
 
     @Override
@@ -328,5 +365,7 @@ public class ModificarController implements Initializable {
         labelParticipa.setVisible(false);
         cbParticipa.setVisible(false);
         labelError.setVisible(false);
+        labelOpta.setVisible(false);
+        lvOpta.setVisible(false);
     }
 }

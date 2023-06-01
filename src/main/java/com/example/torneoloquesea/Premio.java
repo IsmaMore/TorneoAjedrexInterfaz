@@ -37,7 +37,7 @@ public class Premio {
     public static ArrayList<Premio> obtenerPremios(Connection cnx){
         ArrayList<Premio> premios = new ArrayList<>();
         try {
-            ResultSet rsP = cnx.createStatement().executeQuery("select Posicion, Nombre, Tipo_Premio, Cantidad from clasificacion left join jugador on clasificacion.Ranking=jugador.Ranking left join premio on clasificacion.Id_Premio=premio.Id_Premio left join tipoPremio on premio.Id_Tipo_Premio=tipoPremio.Id_Tipo_Premio order by Posicion");
+            ResultSet rsP = cnx.createStatement().executeQuery("select Posicion, Nombre, Tipo_Premio, Cantidad from clasificacion inner join jugador on clasificacion.Ranking=jugador.Ranking inner join premio on clasificacion.Id_Premio=premio.Id_Premio inner join tipoPremio on premio.Id_Tipo_Premio=tipoPremio.Id_Tipo_Premio order by Tipo_Premio");
             rsP.first();
             do {
                 premios.add(new Premio(rsP.getInt(1), rsP.getString(2), rsP.getString(3), (rsP.getInt(4) + "€") ));
@@ -47,5 +47,22 @@ public class Premio {
             e.printStackTrace();
         }
         return premios;
+    }
+
+    public static ArrayList<String> obtenerTipoPremioOpta(Connection cnx, int Ranking){
+        ArrayList<String> tipoOpta = new ArrayList<>();
+        try {
+            ResultSet rsO = cnx.createStatement().executeQuery("select Tipo_Premio from tipoPremio inner join opta on tipoPremio.Id_Tipo_Premio=opta.Id_Tipo_Premio where Id_Ranking = " + Ranking);
+            if (rsO.first()){
+                do {
+                    tipoOpta.add(rsO.getString(1));
+                }while (rsO.next());
+            }else {
+                return null;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return tipoOpta;
     }
 }

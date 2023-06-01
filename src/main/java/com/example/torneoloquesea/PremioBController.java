@@ -78,7 +78,7 @@ public class PremioBController extends  ModificarController implements Initializ
                 }
                 bw.write(" | ");
                 String tipo_Premio = premio.getTipo_Premio();
-                if (!(tipo_Premio == null)){
+                if (tipo_Premio != null){
                     bw.write(tipo_Premio);
                     for (int i = 1; i <= espTipo_Premio - tipo_Premio.length(); i++ ){
                         bw.write(" ");
@@ -88,7 +88,6 @@ public class PremioBController extends  ModificarController implements Initializ
                         bw.write(" ");
                     }
                 }
-
                 bw.write(" | ");
                 String cantidad = premio.getCantidad();
                 bw.write(" " + cantidad);

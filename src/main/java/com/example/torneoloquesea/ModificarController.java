@@ -112,8 +112,8 @@ public class ModificarController implements Initializable {
             if (tfId.getText().matches("\\d+") && Ranking == Integer.parseInt(tfId.getText())){
                 if (!tfNombre.getText().isEmpty()) {
                     if (!(Nombre.equals(tfNombre.getText()) || tfNombre.getText().isEmpty()) || tfOrigen.getText() != null || !Alojado.equals(cbAlojado.getValue()) || !Participa.equals(cbParticipa.getValue())) {
-                        if (Origen != null) {
-                            if (!Origen.equals(tfOrigen.getText())) {
+                        if (Origen != null ) {
+                            if (!Origen.equals(tfOrigen.getText()) || !(Nombre.equals(tfNombre.getText()) || tfNombre.getText().isEmpty()) || !Alojado.equals(cbAlojado.getValue()) || !Participa.equals(cbParticipa.getValue())) {
                                 boolean cambio;
                                 if (torneo.equals("A")) {
                                     cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);

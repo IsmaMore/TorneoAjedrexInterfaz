@@ -166,11 +166,14 @@ public class TablaController implements Initializable{
     @FXML
     protected void resetearTabla(){
         if (btmTablaA.getStyleClass().size() == 3){
-            Torneo.ejecutarGenerarJugadoresA();
+            Torneo.ejecutarImportarClasificacionA();
             Torneo.ejecutarGenerarOptaA();
         }else if (btmTablaB.getStyleClass().size() == 3){
-            Torneo.ejecutarGenerarJugadoresB();
             Torneo.ejecutarGenerarOptaB();
+            Torneo.ejecutarGenerarJugadoresB();
+        }else {
+            Torneo.ejecutarGenerarJugadoresA();
+            Torneo.ejecutarImportarClasificacionB();
         }
         mostrarTabla();
     }

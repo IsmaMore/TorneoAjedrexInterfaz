@@ -269,6 +269,26 @@ public class Torneo {
         }
     }
 
+    public static void ejecutarImportarClasificacionA(){
+        try {
+            cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
+            generarDatosClasificacion(cnxA, CSV_CLA_A);
+            cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void ejecutarImportarClasificacionB(){
+        try {
+            cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");
+            generarDatosClasificacion(cnxB, CSV_CLA_B);
+            cnxB.createStatement().execute("SET FOREIGN_KEY_CHECKS=1");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         try {
             cnxA.createStatement().execute("SET FOREIGN_KEY_CHECKS=0");

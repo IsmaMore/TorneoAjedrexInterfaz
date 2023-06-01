@@ -71,9 +71,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="btmReset" mnemonicParsing="false" onAction="#resetearTabla" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Resetear">
+                  <Button fx:id="btmReset" mnemonicParsing="false" onAction="#resetearTabla" prefHeight="70.0" prefWidth="150.0" style="-fx-background-radius: 10;" text="Regenerar Datos">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />

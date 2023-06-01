@@ -111,17 +111,35 @@ public class ModificarController implements Initializable {
         if (Ranking > 0){
             if (tfId.getText().matches("\\d+") && Ranking == Integer.parseInt(tfId.getText())){
                 if (!tfNombre.getText().isEmpty()) {
-                    if (!(Nombre.equals(tfNombre.getText()) || tfNombre.getText().isEmpty()) || !(Origen == null || Origen.equals(tfOrigen.getText())) || !Alojado.equals(cbAlojado.getValue()) || !Participa.equals(cbParticipa.getValue())) {
-                        boolean cambio;
-                        if (torneo.equals("A")) {
-                            cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);
-                        } else {
-                            cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxB);
-                        }
-                        if (cambio) {
-                            mostrarError("¡SE HAN APLICADO LOS CAMBIOS!");
-                        } else {
-                            mostrarError("¡NO SE HAN APLICADO LOS CAMBIOS!");
+                    if (!(Nombre.equals(tfNombre.getText()) || tfNombre.getText().isEmpty()) || tfOrigen.getText() != null || !Alojado.equals(cbAlojado.getValue()) || !Participa.equals(cbParticipa.getValue())) {
+                        if (Origen != null) {
+                            if (!Origen.equals(tfOrigen.getText())) {
+                                boolean cambio;
+                                if (torneo.equals("A")) {
+                                    cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);
+                                } else {
+                                    cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxB);
+                                }
+                                if (cambio) {
+                                    mostrarError("¡SE HAN APLICADO LOS CAMBIOS!");
+                                } else {
+                                    mostrarError("¡NO SE HAN APLICADO LOS CAMBIOS!");
+                                }
+                            }else {
+                                mostrarError("¡NO HAS MODIFICADO NINGÚN CAMPO!");
+                            }
+                        }else {
+                            boolean cambio;
+                            if (torneo.equals("A")) {
+                                cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxA);
+                            } else {
+                                cambio = Jugador.modificarJugador(Ranking, tfNombre.getText(), tfOrigen.getText(), cbAlojado.getValue(), cbParticipa.getValue(), cnxB);
+                            }
+                            if (cambio) {
+                                mostrarError("¡SE HAN APLICADO LOS CAMBIOS!");
+                            } else {
+                                mostrarError("¡NO SE HAN APLICADO LOS CAMBIOS!");
+                            }
                         }
                     } else {
                         mostrarError("¡NO HAS MODIFICADO NINGÚN CAMPO!");
